@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Ainun RentCar</string>
+    <string name="red" />
+    <string name="blue" />
+    <string name="orange" />
+    <string name="rental_mobil_mudah">Rental Mobil Mudah</string>
+    <string name="pilih_kendaraan">Pilih Kendaraan</string>
+    <string name="icon">Icon</string>
+    <string name="avanza">Avanza</string>
+    <string name="tanggal_mulai">Tanggal Mulai</string>
+    <string name="tanggal_selesai">Tanggal Selesai</string>
+    <string name="cari_mobil">CARI MOBIL</string>
+    <string name="pilih_mobil">Pilih mobil</string>
+    <string name="menampilkan_daftar_mobil_tersedia">Menampilkan daftar mobil tersedia</string>
+    <string name="blablabla">Blablabla</string>
+    <string name="gambar">Gambar</string>
+    <string name="_12_12_2020">12-12-2020</string>
+    <string name="_17_01_2020">17-01-2020</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

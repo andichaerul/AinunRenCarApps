@@ -1,0 +1,2 @@
+rootProject.name='Ainun RentCar'
+include ':app'
