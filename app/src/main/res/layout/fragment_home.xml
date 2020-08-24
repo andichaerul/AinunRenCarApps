@@ -39,6 +39,8 @@
                         android:textSize="18sp" />
 
                     <LinearLayout
+                        android:clickable="true"
+                        android:background="?attr/selectableItemBackground"
                         android:id="@+id/tanggalAwal"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -83,6 +85,8 @@
                         android:textSize="18sp" />
 
                     <LinearLayout
+                        android:clickable="true"
+                        android:background="?attr/selectableItemBackground"
                         android:id="@+id/tanggalSelesai"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
