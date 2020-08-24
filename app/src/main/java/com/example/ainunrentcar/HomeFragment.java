@@ -26,6 +26,7 @@ public class HomeFragment extends Fragment {
     private DatePickerDialog datePickerDialog;
     private TextView resultTanggalAwal;
     private TextView resultTanggalSelesai;
+    private SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     public HomeFragment() {
@@ -43,6 +44,8 @@ public class HomeFragment extends Fragment {
         resultTanggalAwal = (TextView) root.findViewById(R.id.tglAwal);
         resultTanggalSelesai = (TextView) root.findViewById(R.id.tglSelesai);
 
+        defaultValue();
+
         LinearLayout tanggalAwal = (LinearLayout) root.findViewById(R.id.tanggalAwal);
         tanggalAwal.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,47 +61,17 @@ public class HomeFragment extends Fragment {
                 tampilkanDatePicker("selesai");
             }
         });
-
-        // Set value
-//        tanggalAwal.setText(setValueTglAwal());
-//        tanggalSelesai.setText(setValueTglSelesai());
-
-
-//        tanggalAwal.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent i = new Intent(getActivity(), DatePickerActivity.class);
-//
-//                String tanggalUntuk = "pilihTanggalAwal";
-//                i.putExtra("tanggalUntuk", tanggalUntuk);
-//
-//                String[] splitTglAwal = tanggalAwal.getText().toString().split("-");
-//                i.putExtra("tglAwal", Integer.parseInt(splitTglAwal[0]));
-//
-//                startActivityForResult(i, 2);
-//            }
-//        });
-
-
-//        tanggalSelesai.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent i = new Intent(getActivity(), DatePickerActivity.class);
-//
-//                String tanggalUntuk = "pilihTanggalSelesai";
-//                i.putExtra("tanggalUntuk", tanggalUntuk);
-//
-//
-//                String[] splitTglAwal = tanggalSelesai.getText().toString().split("-");
-//                i.putExtra("tglAwal", Integer.parseInt(splitTglAwal[0]));
-//
-//                String tA = tanggalAwal.getText().toString();
-//                i.putExtra("tglFullAwal", tA);
-//                startActivityForResult(i, 3);
-//            }
-//        });
-
         return root;
+    }
+
+    // Untuk mengset value tgl awal dan tgl selesai pada saat aplikasi awal dibuka
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    private void defaultValue() {
+        Calendar currentTime = Calendar.getInstance();
+        resultTanggalAwal.setText(dateFormat.format(currentTime.getTime()));
+
+        currentTime.add(Calendar.DATE,1);
+        resultTanggalSelesai.setText(dateFormat.format(currentTime.getTime()));
     }
 
 
@@ -131,12 +104,15 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                Calendar newDate = Calendar.getInstance();
-                newDate.set(year, monthOfYear, dayOfMonth);
-                SimpleDateFormat dateFormatter = new SimpleDateFormat("dd-MM-yyyy");
-                resultTanggalAwal.setText(dateFormatter.format(newDate.getTime()));
                 if (awalOrSelesai.equals("awal")) {
+                    Calendar newDate = Calendar.getInstance();
+                    newDate.set(year, monthOfYear, dayOfMonth);
+                    resultTanggalAwal.setText(dateFormat.format(newDate.getTime()));
                     setResultTanggalSelesai();
+                } else {
+                    Calendar newDate1 = Calendar.getInstance();
+                    newDate1.set(year, monthOfYear, dayOfMonth);
+                    resultTanggalSelesai.setText(dateFormat.format(newDate1.getTime()));
                 }
             }
         },
@@ -145,26 +121,6 @@ public class HomeFragment extends Fragment {
         datePickerDialog.show();
     }
 
-
-//    @RequiresApi(api = Build.VERSION_CODES.N)
-//    public String setValueTglAwal() {
-//        Date c = Calendar.getInstance().getTime();
-//        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
-//        String valueTglAwal = dateFormat.format(c);
-//        return valueTglAwal;
-//    }
-
-//    @RequiresApi(api = Build.VERSION_CODES.N)
-//    public String setValueTglSelesai() {
-//        Date dt = new Date();
-//        Calendar c = Calendar.getInstance();
-//        c.setTime(dt);
-//        c.add(Calendar.DATE, 1);
-//        dt = c.getTime();
-//        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
-//        String valueTglSelesai = dateFormat.format(dt);
-//        return valueTglSelesai;
-//    }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     private void setResultTanggalSelesai() {
@@ -177,22 +133,8 @@ public class HomeFragment extends Fragment {
         cal.set(Calendar.DATE, dd);
         cal.set(Calendar.YEAR, yyyy);
         Date date = cal.getTime();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
         String setValue = dateFormat.format(date);
         resultTanggalSelesai.setText(setValue);
     }
 
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 2) {
-            String tglYgDiPilih = data.getStringExtra("tglYgDiPilih");
-            Log.d("sasasasa", "sasasasa");
-            TextView tanggalAwal = (TextView) getView().findViewById(R.id.tglAwal);
-            tanggalAwal.setText(tglYgDiPilih);
-        } else if (requestCode == 3) {
-            String tglYgDiPilih = data.getStringExtra("tglYgDiPilih");
-            TextView tanggalSelesai = (TextView) getView().findViewById(R.id.tglSelesai);
-            tanggalSelesai.setText(tglYgDiPilih);
-        }
-    }
 }
