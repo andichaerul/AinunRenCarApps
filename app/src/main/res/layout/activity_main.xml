@@ -15,7 +15,12 @@
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
         android:minHeight="?attr/actionBarSize"
-        app:navigationIcon="@drawable/ic_launcher_foreground"
         app:titleTextColor="#FAFAFA">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ainun RentCar" />
     </androidx.appcompat.widget.Toolbar>
+
 </RelativeLayout>

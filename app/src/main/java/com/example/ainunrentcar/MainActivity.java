@@ -3,6 +3,7 @@ package com.example.ainunrentcar;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.LayoutInflaterCompat;
 import androidx.fragment.app.Fragment;
 
 import android.os.Build;
@@ -11,6 +12,7 @@ import android.view.MenuItem;
 
 import androidx.appcompat.widget.Toolbar;
 
+//import com.mikepenz.iconics.context.IconicsLayoutInflater2;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 
@@ -21,13 +23,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initViews();
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Ainun RentApps");
-
+//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+//        setSupportActionBar(toolbar);
         menuBottom();
-
-
     }
 
     public void initViews() {
