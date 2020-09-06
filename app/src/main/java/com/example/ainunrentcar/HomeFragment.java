@@ -67,7 +67,6 @@ public class HomeFragment extends Fragment {
         // Disini Inisialisasi View
         super.onCreateView(inflater, container, savedInstanceState);
         View root = inflater.inflate(R.layout.fragment_home, container, false);
-        Log.d("baseUrl",urlSlide);
         initViews(root);
         setAdapterKeRecycleView();
         defaultValue();

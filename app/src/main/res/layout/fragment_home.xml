@@ -16,6 +16,7 @@
 
         <androidx.cardview.widget.CardView
             app:cardCornerRadius="6dp"
+            app:cardElevation="1dp"
             app:cardUseCompatPadding="true"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -137,12 +138,14 @@
             android:gravity="center_horizontal"
             android:orientation="horizontal">
 
+
+
             <LinearLayout
                 android:id="@+id/cariMobilTersedia"
                 android:layout_width="170dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/shape_button"
+                android:background="@drawable/pendukung_riple_button_search"
                 android:gravity="center_horizontal|center_vertical"
                 android:orientation="horizontal"
                 android:padding="10dp">

@@ -7,8 +7,10 @@
     android:layout_marginLeft="10dp"
     android:layout_marginRight="10dp"
     android:layout_marginBottom="3dp"
-    card_view:cardCornerRadius="0dp"
-    card_view:cardElevation="3dp"
+    android:background="@drawable/pendukung_riple_effect"
+    android:clickable="true"
+    card_view:cardCornerRadius="6dp"
+    card_view:cardElevation="1dp"
     card_view:cardUseCompatPadding="true">
 
     <LinearLayout
@@ -33,44 +35,49 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/padauk_reguler"
-                android:textStyle="bold"
+                android:layout_marginBottom="-15dp"
+                android:fontFamily="@font/mandali"
                 android:text="Rp.250.000"
-                android:textSize="15dp" />
+                android:textSize="15dp"
+                android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/namaMitra"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/padauk_reguler"
+                android:layout_marginBottom="-12dp"
+                android:fontFamily="@font/mandali"
                 android:text="Ainun Rental Car"
                 android:textSize="12dp" />
 
             <TextView
+                android:id="@+id/unitBrand"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/padauk_reguler"
+                android:fontFamily="@font/mandali"
                 android:text="Daihatsu Xenia 2014 Tipe M"
                 android:textSize="12dp" />
 
             <LinearLayout
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:fontFamily="@font/octicons"
                     android:gravity="bottom"
-                    android:paddingBottom="4dp"
+                    android:paddingBottom="7dp"
                     android:text=""
                     android:textSize="12dp"
                     android:textStyle="bold" />
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:fontFamily="@font/mandali"
                     android:gravity="bottom"
-                    android:fontFamily="@font/padauk_reguler"
                     android:text="Jalan Maros 5 93"
                     android:textSize="12dp" />
 

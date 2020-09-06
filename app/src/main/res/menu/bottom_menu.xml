@@ -2,18 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/home"
-        android:icon="@drawable/ic_home_black_24dp"
-        android:title="Home" />
+        android:title=""
+        />
     <item
         android:id="@+id/pemesanan"
-        android:icon="@drawable/ic_library_books_black_24dp"
-        android:title="Pemesanan" />
+        android:title="" />
     <item
         android:id="@+id/bantuan"
-        android:icon="@drawable/ic_help_black_24dp"
-        android:title="Bantuan" />
+
+        android:title="" />
     <item
         android:id="@+id/profile"
-        android:icon="@drawable/ic_account_circle_black_24dp"
-        android:title="Profil" />
+
+        android:title="" />
 </menu>

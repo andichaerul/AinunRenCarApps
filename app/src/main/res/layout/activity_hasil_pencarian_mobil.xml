@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/cardview_shadow_end_color"
     tools:context=".HasilPencarianMobilActivity">
 
     <androidx.appcompat.widget.Toolbar
@@ -24,7 +25,8 @@
                 android:id="@+id/tanggalAwal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/padauk_reguler"
+                android:fontFamily="@font/mandali"
+                android:layout_marginBottom="-5dp"
                 android:text="Dari Tanggal : 12-12-2020"
                 android:textColor="#FFFFFF" />
 
@@ -32,7 +34,7 @@
                 android:id="@+id/tanggalSelesai"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/padauk_reguler"
+                android:fontFamily="@font/mandali"
                 android:text="Sampai Tanggal : 12-12-2020"
                 android:textColor="#FFFFFF" />
         </LinearLayout>
@@ -56,7 +58,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/padauk_reguler"
+            android:fontFamily="@font/mandali"
             android:gravity="end"
             android:text="2. Detail Mobil"
             android:textColor="#FFFFFF"
@@ -76,7 +78,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/padauk_reguler"
+                android:fontFamily="@font/mandali"
                 android:text="8 Mobil Tersedia" />
 
             <LinearLayout
@@ -86,25 +88,26 @@
 
                 <LinearLayout
                     android:id="@+id/tombolFilter"
-                    android:layout_width="70dp"
+                    android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:background="@android:color/darker_gray"
                     android:gravity="center_horizontal|center_vertical"
                     android:orientation="horizontal"
-                    android:padding="5dp">
+
+                    android:padding="1dp">
 
                     <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_marginRight="5dp"
-                        android:textColor="@android:color/white"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
                         android:fontFamily="@font/flaticon2"
-                        android:text="" />
+                        android:text=""
+                        android:textColor="@android:color/white" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/padauk_reguler"
+                        android:fontFamily="@font/mandali"
                         android:text="Filter"
                         android:textColor="@android:color/white" />
                 </LinearLayout>

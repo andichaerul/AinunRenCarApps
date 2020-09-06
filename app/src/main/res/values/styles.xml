@@ -17,13 +17,14 @@
     </style>
 
     <style name="BottomNavigation" parent="@style/Widget.Design.BottomNavigationView">
-        <item name="fontFamily">@font/mandali</item>
-        <item name="android:textSize">15dp</item>
+        <item name="fontFamily">@font/feather</item>
+        <item name="android:textSize">25dp</item>
     </style>
 
     <style name="AppBarStyle" parent="@style/Widget.AppCompat.Toolbar">
         <item name="fontFamily">@font/mandali</item>
         <item name="android:textSize">1dp</item>
     </style>
+
 
 </resources>
