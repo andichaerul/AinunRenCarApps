@@ -21,6 +21,7 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.ainunrentcar.Model.ModelDaftarMobilTersedia;
 import com.example.ainunrentcar.Service.BaseUrl;
+import com.example.ainunrentcar.Service.TglSql;
 import com.example.ainunrentcar.View.AdapterDaftarMobilTersedia;
 
 import org.json.JSONArray;
@@ -34,7 +35,6 @@ import java.util.List;
 public class HasilPencarianMobilActivity extends AppCompatActivity {
     private List<ModelDaftarMobilTersedia> modelDaftarMobilTersediaList;
     private BaseUrl baseUrl = new BaseUrl();
-    private String urlApiMobilTersedia = baseUrl.baseUrl + "api/v1/find_armada/2019-01-01/2019-01-01";
     private RecyclerView recyclerView;
     private AdapterDaftarMobilTersedia adapterDaftarMobilTersedia;
     private LinearLayoutManager linearLayoutManager;
@@ -44,6 +44,7 @@ public class HasilPencarianMobilActivity extends AppCompatActivity {
     private String tanggalAwalString;
     private String tanggalSelesaiString;
     private LinearLayout tombolFilter;
+    private TextView tampilanLoading;
 
     public HasilPencarianMobilActivity() {
     }
@@ -56,10 +57,8 @@ public class HasilPencarianMobilActivity extends AppCompatActivity {
         toolbar();
         initViews();
         setTitleToolbar();
-        recyclerView = (RecyclerView) findViewById(R.id.daftarMobilTersedia);
         addData();
         getDataApiMobilTersedia();
-
         tombolFilter = (LinearLayout) findViewById(R.id.tombolFilter);
         tombolFilter.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,6 +85,8 @@ public class HasilPencarianMobilActivity extends AppCompatActivity {
     private void initViews() {
         tanggalAwal = findViewById(R.id.tanggalAwal);
         tanggalSelesai = findViewById(R.id.tanggalSelesai);
+        recyclerView = (RecyclerView) findViewById(R.id.daftarMobilTersedia);
+        tampilanLoading = (TextView) findViewById(R.id.tampilanLoading);
     }
 
     @SuppressLint("SetTextI18n")
@@ -97,41 +98,40 @@ public class HasilPencarianMobilActivity extends AppCompatActivity {
     }
 
     private void getDataApiMobilTersedia() {
-        final ProgressDialog progressDialog = new ProgressDialog(HasilPencarianMobilActivity.this);
-        progressDialog.setMessage("Loading...");
-        progressDialog.show();
-
+        TglSql tglSql = new TglSql();
+        String tglAwal = tglSql.tglSql(tanggalAwalString);
+        String tglSelesai = tglSql.tglSql(tanggalSelesaiString);
+        String urlApiMobilTersedia = baseUrl.baseUrl + "api/v1/find_armada/" + tglAwal + "/" + tglSelesai + "";
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(urlApiMobilTersedia, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
                 for (int i = 0; i < response.length(); i++) {
                     try {
                         JSONObject jsonObject = response.getJSONObject(i);
-
                         ModelDaftarMobilTersedia modelDaftarMobilTersedia = new ModelDaftarMobilTersedia();
                         modelDaftarMobilTersedia.setNamaMitra(jsonObject.getString("namaMitra"));
                         modelDaftarMobilTersedia.setUnitBrand(jsonObject.getString("unitBrand"));
                         modelDaftarMobilTersediaList.add(modelDaftarMobilTersedia);
                     } catch (JSONException e) {
                         e.printStackTrace();
-                        progressDialog.dismiss();
+                        tampilanLoading.setVisibility(View.GONE);
                     }
                 }
                 adapter.notifyDataSetChanged();
-                progressDialog.dismiss();
+                tampilanLoading.setVisibility(View.GONE);
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.e("Volley", error.toString());
-                progressDialog.dismiss();
+                tampilanLoading.setVisibility(View.GONE);
             }
         });
         RequestQueue requestQueue = Volley.newRequestQueue(HasilPencarianMobilActivity.this);
         requestQueue.add(jsonArrayRequest);
     }
 
-    // untuk Mengset Adapter Offers (Penawaran) ke recycleview
+    // untuk Mengset Adapter MobilTersedia ke recycleview
     private void addData() {
 
         modelDaftarMobilTersediaList = new ArrayList<ModelDaftarMobilTersedia>();

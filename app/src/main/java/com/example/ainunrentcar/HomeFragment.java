@@ -1,5 +1,6 @@
 package com.example.ainunrentcar;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -30,7 +31,6 @@ import com.example.ainunrentcar.View.AdapterOffers;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import android.icu.util.Calendar;
@@ -45,6 +45,7 @@ public class HomeFragment extends Fragment {
     private DatePickerDialog datePickerDialog;
     private TextView resultTanggalAwal;
     private TextView resultTanggalSelesai;
+    @SuppressLint("SimpleDateFormat")
     private SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
     private RecyclerView mList;
     private LinearLayoutManager linearLayoutManager;
@@ -64,7 +65,6 @@ public class HomeFragment extends Fragment {
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Disini Inisialisasi View
         super.onCreateView(inflater, container, savedInstanceState);
         View root = inflater.inflate(R.layout.fragment_home, container, false);
         initViews(root);
@@ -135,7 +135,6 @@ public class HomeFragment extends Fragment {
 
         mList.setHasFixedSize(true);
         mList.setLayoutManager(linearLayoutManager);
-//        mList.addItemDecoration(dividerItemDecoration);
         mList.setAdapter(adapter);
     }
 
@@ -154,26 +153,16 @@ public class HomeFragment extends Fragment {
     @RequiresApi(api = Build.VERSION_CODES.N)
     private void tampilkanDatePicker(final String awalOrSelesai) {
         Calendar newCalendar = Calendar.getInstance();
-        int setDate = 1;
+        int setTanggal = 1;
         if (awalOrSelesai.equals("awal")) {
             String[] tglAwalArr = resultTanggalAwal.getText().toString().split("-");
-            setDate = Integer.parseInt(tglAwalArr[0]);
-
+            setTanggal = Integer.parseInt(tglAwalArr[0]);
             //Set minDate
             newCalendar.add(Calendar.YEAR, 0);
-        } else {
+        } else if (awalOrSelesai.equals("selesai")) {
             String[] tglSelesaiArr = resultTanggalSelesai.getText().toString().split("-");
-            setDate = Integer.parseInt(tglSelesaiArr[0]);
-
-            //SetMinDate
-            String[] dariTanggalAwal = resultTanggalAwal.getText().toString().split("-");
-            int mm = Integer.parseInt(dariTanggalAwal[1]);
-            int dd = Integer.parseInt(dariTanggalAwal[0]);
-            int yyyy = Integer.parseInt(dariTanggalAwal[2]);
-            newCalendar.set(Calendar.MONTH, mm);
-            newCalendar.set(Calendar.DATE, dd);
-            newCalendar.set(Calendar.YEAR, yyyy);
-            newCalendar.add(Calendar.DATE, 1);
+            setTanggal = Integer.parseInt(tglSelesaiArr[0]);
+            setTanggalMinimalSelesaiRental(newCalendar);
         }
         datePickerDialog = new DatePickerDialog(getContext(), new DatePickerDialog.OnDateSetListener() {
 
@@ -183,34 +172,37 @@ public class HomeFragment extends Fragment {
                     Calendar newDate = Calendar.getInstance();
                     newDate.set(year, monthOfYear, dayOfMonth);
                     resultTanggalAwal.setText(dateFormat.format(newDate.getTime()));
-                    setResultTanggalSelesai();
-                } else {
+                    setResultTanggalSelesai(newDate);
+                } else if (awalOrSelesai.equals("selesai")) {
                     Calendar newDate1 = Calendar.getInstance();
                     newDate1.set(year, monthOfYear, dayOfMonth);
                     resultTanggalSelesai.setText(dateFormat.format(newDate1.getTime()));
                 }
             }
         },
-                newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), setDate);
+                newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), setTanggal);
         datePickerDialog.getDatePicker().setMinDate(newCalendar.getTimeInMillis());
         datePickerDialog.show();
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    private void setTanggalMinimalSelesaiRental(Calendar newCalendar) {
+        String[] dariTanggalAwal = resultTanggalAwal.getText().toString().split("-");
+        int mm = Integer.parseInt(dariTanggalAwal[1]);
+        int dd = Integer.parseInt(dariTanggalAwal[0]);
+        int yyyy = Integer.parseInt(dariTanggalAwal[2]);
+        newCalendar.set(Calendar.MONTH, mm);
+        newCalendar.set(Calendar.DATE, dd);
+        newCalendar.set(Calendar.YEAR, yyyy);
+        newCalendar.add(Calendar.DATE, 1);
     }
 
 
     // Untuk mengset tanggal selesai
     @RequiresApi(api = Build.VERSION_CODES.N)
-    private void setResultTanggalSelesai() {
-        String[] dariTanggalAwal = resultTanggalAwal.getText().toString().split("-");
-        int mm = Integer.parseInt(dariTanggalAwal[1]);
-        int dd = Integer.parseInt(dariTanggalAwal[0]) + 1;
-        int yyyy = Integer.parseInt(dariTanggalAwal[2]);
-        Calendar cal = Calendar.getInstance();
-        cal.set(Calendar.MONTH, mm);
-        cal.set(Calendar.DATE, dd);
-        cal.set(Calendar.YEAR, yyyy);
-        Date date = cal.getTime();
-        String setValue = dateFormat.format(date);
-        resultTanggalSelesai.setText(setValue);
+    private void setResultTanggalSelesai(Calendar date) {
+        date.add(Calendar.DATE, 1);
+        resultTanggalSelesai.setText(dateFormat.format(date.getTime()));
     }
 
 
