@@ -53,7 +53,7 @@ public class HomeFragment extends Fragment {
     private List<ModelOffers> modelOffersList;
     private RecyclerView.Adapter adapter;
     private BaseUrl baseUrl = new BaseUrl();
-    private String urlSlide = baseUrl.baseUrl + "api/v1/offers";
+    private String urlSlide = baseUrl.baseUrl + baseUrl.subUrlOffersPromo;
     private LinearLayout tanggalAwal;
     private LinearLayout tanggalSelesai;
 
@@ -221,7 +221,8 @@ public class HomeFragment extends Fragment {
 
                         ModelOffers modelOffers = new ModelOffers();
                         modelOffers.setJudul(jsonObject.getString("JudulPromo"));
-                        modelOffers.setUrlGambar(jsonObject.getString("UrlGambar"));
+                        String namaFileGambar = jsonObject.getString("UrlGambar");
+                        modelOffers.setUrlGambar(baseUrl.baseUrl + baseUrl.subUrlImageOffersPromo + namaFileGambar);
                         modelOffersList.add(modelOffers);
                     } catch (JSONException e) {
                         e.printStackTrace();

@@ -1,32 +1,59 @@
 package com.example.ainunrentcar.Model;
 
-
-import android.widget.ImageView;
-
-import java.util.ArrayList;
-
 public class ModelDaftarMobilTersedia {
 
 
     private String namaMitra;
     private String unitBrand;
-//    private String namaUnit;
-//    private String typeVarian;
-//    private String warna;
-//    private String isMatic;
-//    private String tahunKendaraan;
-//    private String isIncludeDriver;
-//    private ArrayList urlGambar;
+    private String hargaPerhari;
+    private String namaLengkapUnit;
+    private String alamatMitra;
+    private String urlImgUnit;
 
     public ModelDaftarMobilTersedia() {
 
     }
 
-    public ModelDaftarMobilTersedia(String namaMitra, String unitBrand) {
+    public ModelDaftarMobilTersedia(String namaMitra, String namaLengkapUnit, String hargaPerhari, String alamatMitra, String urlImgUnit) {
         this.namaMitra = namaMitra;
-        this.unitBrand = unitBrand;
+        this.namaLengkapUnit = namaLengkapUnit;
+        this.hargaPerhari = hargaPerhari;
+        this.alamatMitra = alamatMitra;
+        this.urlImgUnit = urlImgUnit;
     }
 
+    public String getUrlImgUnit() {
+        return urlImgUnit;
+    }
+
+    public void setUrlImgUnit(String urlImgUnit) {
+        this.urlImgUnit = urlImgUnit;
+    }
+
+
+    public String getAlamatMitra() {
+        return alamatMitra;
+    }
+
+    public void setAlamatMitra(String alamatMitra) {
+        this.alamatMitra = alamatMitra;
+    }
+
+    public String getNamaLengkapUnit() {
+        return namaLengkapUnit;
+    }
+
+    public void setNamaLengkapUnit(String namaLengkapUnit) {
+        this.namaLengkapUnit = namaLengkapUnit;
+    }
+
+    public String getHargaPerhari() {
+        return hargaPerhari;
+    }
+
+    public void setHargaPerhari(String hargaPerhari) {
+        this.hargaPerhari = hargaPerhari;
+    }
 
 
     public String getNamaMitra() {
@@ -44,61 +71,5 @@ public class ModelDaftarMobilTersedia {
     public void setUnitBrand(String unitBrand) {
         this.unitBrand = unitBrand;
     }
-
-//    public String getNamaUnit() {
-//        return namaUnit;
-//    }
-//
-//    public void setNamaUnit(String namaUnit) {
-//        this.namaUnit = namaUnit;
-//    }
-//
-//    public String getTypeVarian() {
-//        return typeVarian;
-//    }
-//
-//    public void setTypeVarian(String typeVarian) {
-//        this.typeVarian = typeVarian;
-//    }
-//
-//    public String getWarna() {
-//        return warna;
-//    }
-//
-//    public void setWarna(String warna) {
-//        this.warna = warna;
-//    }
-//
-//    public String getIsMatic() {
-//        return isMatic;
-//    }
-//
-//    public void setIsMatic(String isMatic) {
-//        this.isMatic = isMatic;
-//    }
-//
-//    public String getTahunKendaraan() {
-//        return tahunKendaraan;
-//    }
-//
-//    public void setTahunKendaraan(String tahunKendaraan) {
-//        this.tahunKendaraan = tahunKendaraan;
-//    }
-//
-//    public String getIsIncludeDriver() {
-//        return isIncludeDriver;
-//    }
-//
-//    public void setIsIncludeDriver(String isIncludeDriver) {
-//        this.isIncludeDriver = isIncludeDriver;
-//    }
-
-//    public ArrayList getUrlGambar() {
-//        return urlGambar;
-//    }
-//
-//    public void setUrlGambar(ArrayList urlGambar) {
-//        this.urlGambar = urlGambar;
-//    }
 
 }

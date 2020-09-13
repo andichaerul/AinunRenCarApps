@@ -1,13 +1,17 @@
 package com.example.ainunrentcar.View;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.ainunrentcar.Model.ModelDaftarMobilTersedia;
 import com.example.ainunrentcar.R;
 
@@ -32,19 +36,22 @@ public class AdapterDaftarMobilTersedia extends RecyclerView.Adapter<AdapterDaft
         return new ViewHolder(v);
     }
 
+    @SuppressLint({"SetTextI18n", "CheckResult"})
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         ModelDaftarMobilTersedia modelDaftarMobilTersedia = list.get(position);
-//        RequestOptions requestOptions = new RequestOptions();
-//        requestOptions.placeholder(R.drawable.image_null);
-//        requestOptions.error(R.drawable.image_null);
-//        Glide.with(holder.imgSlide)
-//                .setDefaultRequestOptions(requestOptions)
-//                .load(list.get(position).getUrlGambar())
-//                .apply(new RequestOptions().centerCrop())
-//                .into(holder.imgSlide);
+        RequestOptions requestOptions = new RequestOptions();
+        requestOptions.placeholder(R.drawable.image_null);
+        requestOptions.error(R.drawable.image_null);
+        Glide.with(holder.urlImgUnit)
+                .setDefaultRequestOptions(requestOptions)
+                .load(list.get(position).getUrlImgUnit())
+                .apply(new RequestOptions().centerCrop())
+                .into(holder.urlImgUnit);
+        holder.hargaPerhari.setText(String.valueOf(modelDaftarMobilTersedia.getHargaPerhari()) + " / Hari");
         holder.namaMitra.setText(String.valueOf(modelDaftarMobilTersedia.getNamaMitra()));
-        holder.unitBrand.setText(String.valueOf(modelDaftarMobilTersedia.getUnitBrand()));
+        holder.namaLengkapUnit.setText(String.valueOf(modelDaftarMobilTersedia.getNamaLengkapUnit()));
+        holder.alamatMitra.setText(String.valueOf(modelDaftarMobilTersedia.getAlamatMitra()));
     }
 
     @Override
@@ -53,12 +60,17 @@ public class AdapterDaftarMobilTersedia extends RecyclerView.Adapter<AdapterDaft
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView namaMitra, unitBrand;
+        public TextView namaMitra, namaLengkapUnit, hargaPerhari, alamatMitra;
+        public ImageView urlImgUnit;
 
         public ViewHolder(View itemView) {
             super(itemView);
+            hargaPerhari = itemView.findViewById(R.id.hargaPerhari);
             namaMitra = itemView.findViewById(R.id.namaMitra);
-            unitBrand = itemView.findViewById(R.id.unitBrand);
+            namaLengkapUnit = itemView.findViewById(R.id.namaLengkapUnit);
+            alamatMitra = itemView.findViewById(R.id.alamatMitra);
+            urlImgUnit = itemView.findViewById(R.id.imgUnit);
+
         }
     }
 

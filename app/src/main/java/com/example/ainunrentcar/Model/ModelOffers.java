@@ -8,7 +8,6 @@ public class ModelOffers {
     public String judul;
     public String deskripsi;
     public String urlGambar;
-    public BaseUrl baseUrl = new BaseUrl();
 
     public ModelOffers() {
 
@@ -37,7 +36,7 @@ public class ModelOffers {
     }
 
     public String getUrlGambar() {
-        return baseUrl.baseUrl + urlGambar;
+        return urlGambar;
     }
 
     public void setUrlGambar(String urlGambar) {

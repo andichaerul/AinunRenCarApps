@@ -76,10 +76,11 @@
             android:layout_margin="10dp">
 
             <TextView
+                android:id="@+id/jumlahMobilTersedia"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/mandali"
-                android:text="8 Mobil Tersedia" />
+                android:text="mobilTersedia" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -113,6 +114,12 @@
                 </LinearLayout>
             </LinearLayout>
         </RelativeLayout>
+        <TextView
+            android:id="@+id/tampilkanMobilKosong"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="Tidak Mobil Yang Tersedia" />
 
         <TextView
             android:id="@+id/tampilanLoading"

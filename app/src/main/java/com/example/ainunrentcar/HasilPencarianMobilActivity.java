@@ -45,13 +45,14 @@ public class HasilPencarianMobilActivity extends AppCompatActivity {
     private String tanggalSelesaiString;
     private LinearLayout tombolFilter;
     private TextView tampilanLoading;
+    private TextView tampilkanMobilKosong;
+    private TextView jumlahMobilTersedia;
 
     public HasilPencarianMobilActivity() {
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hasil_pencarian_mobil);
         toolbar();
@@ -67,6 +68,7 @@ public class HasilPencarianMobilActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+        tampilkanMobilKosong.setVisibility(View.GONE);
     }
 
     // Untuk toolbar
@@ -87,6 +89,8 @@ public class HasilPencarianMobilActivity extends AppCompatActivity {
         tanggalSelesai = findViewById(R.id.tanggalSelesai);
         recyclerView = (RecyclerView) findViewById(R.id.daftarMobilTersedia);
         tampilanLoading = (TextView) findViewById(R.id.tampilanLoading);
+        tampilkanMobilKosong = (TextView) findViewById(R.id.tampilkanMobilKosong);
+        jumlahMobilTersedia = (TextView) findViewById(R.id.jumlahMobilTersedia);
     }
 
     @SuppressLint("SetTextI18n")
@@ -103,20 +107,31 @@ public class HasilPencarianMobilActivity extends AppCompatActivity {
         String tglSelesai = tglSql.tglSql(tanggalSelesaiString);
         String urlApiMobilTersedia = baseUrl.baseUrl + "api/v1/find_armada/" + tglAwal + "/" + tglSelesai + "";
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(urlApiMobilTersedia, new Response.Listener<JSONArray>() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onResponse(JSONArray response) {
-                for (int i = 0; i < response.length(); i++) {
-                    try {
-                        JSONObject jsonObject = response.getJSONObject(i);
-                        ModelDaftarMobilTersedia modelDaftarMobilTersedia = new ModelDaftarMobilTersedia();
-                        modelDaftarMobilTersedia.setNamaMitra(jsonObject.getString("namaMitra"));
-                        modelDaftarMobilTersedia.setUnitBrand(jsonObject.getString("unitBrand"));
-                        modelDaftarMobilTersediaList.add(modelDaftarMobilTersedia);
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                        tampilanLoading.setVisibility(View.GONE);
+                jumlahMobilTersedia.setText(response.length() + " Jumlah Mobil Tersedia");
+                if (response.length() == 0) {
+                    tampilkanMobilKosong.setVisibility(View.VISIBLE);
+                } else {
+                    for (int i = 0; i < response.length(); i++) {
+                        try {
+                            JSONObject jsonObject = response.getJSONObject(i);
+                            String urlGambar = jsonObject.getString("urlGambar");
+                            ModelDaftarMobilTersedia modelDaftarMobilTersedia = new ModelDaftarMobilTersedia();
+                            modelDaftarMobilTersedia.setNamaMitra(jsonObject.getString("namaMitra"));
+                            modelDaftarMobilTersedia.setNamaLengkapUnit(jsonObject.getString("namaUnitLengkap"));
+                            modelDaftarMobilTersedia.setHargaPerhari(jsonObject.getString("harga"));
+                            modelDaftarMobilTersedia.setAlamatMitra(jsonObject.getString("alamatMitra"));
+                            modelDaftarMobilTersedia.setUrlImgUnit(baseUrl.baseUrl + baseUrl.subUrlImageUnit + urlGambar);
+                            modelDaftarMobilTersediaList.add(modelDaftarMobilTersedia);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            tampilanLoading.setVisibility(View.GONE);
+                        }
                     }
                 }
+
                 adapter.notifyDataSetChanged();
                 tampilanLoading.setVisibility(View.GONE);
             }
