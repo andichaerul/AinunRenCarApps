@@ -1,5 +1,6 @@
 package com.example.ainunrentcar;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -7,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -19,10 +19,15 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
+import com.bumptech.glide.disklrucache.DiskLruCache;
 import com.example.ainunrentcar.Model.ModelDaftarMobilTersedia;
+import com.example.ainunrentcar.Model.ModelFilterUnit;
 import com.example.ainunrentcar.Service.BaseUrl;
 import com.example.ainunrentcar.Service.TglSql;
 import com.example.ainunrentcar.View.AdapterDaftarMobilTersedia;
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.android.material.chip.Chip;
+import com.google.android.material.chip.ChipGroup;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -47,6 +52,11 @@ public class HasilPencarianMobilActivity extends AppCompatActivity {
     private TextView tampilanLoading;
     private TextView tampilkanMobilKosong;
     private TextView jumlahMobilTersedia;
+    private TextView closeFormFilter;
+    private BottomSheetBehavior behavior;
+    private View tampilanFilter;
+    private ChipGroup filterUnit;
+    private String urlUnit = "http://192.168.1.8/ainun-rent/api/v1/find_armada/2020-09-20/2020-09-21/order_by_varian";
 
     public HasilPencarianMobilActivity() {
     }
@@ -60,15 +70,47 @@ public class HasilPencarianMobilActivity extends AppCompatActivity {
         setTitleToolbar();
         addData();
         getDataApiMobilTersedia();
-        tombolFilter = (LinearLayout) findViewById(R.id.tombolFilter);
-        tombolFilter.setOnClickListener(new View.OnClickListener() {
+        tampilkanMobilKosong.setVisibility(View.GONE);
+        setCloseFormFilter();
+        setBottomSheetTampilkan();
+
+
+        final ProgressDialog progressDialog = new ProgressDialog(HasilPencarianMobilActivity.this);
+        progressDialog.setMessage("Loading...");
+        progressDialog.show();
+
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(urlUnit, new Response.Listener<JSONArray>() {
             @Override
-            public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(), UrutkanMobilYgTersediaActivity.class);
-                startActivity(i);
+            public void onResponse(JSONArray response) {
+                Log.d("sasa", response.toString());
+                for (int i = 0; i < response.length(); i++) {
+                    try {
+
+//                        JSONObject jsonObject = response.getJSONObject(i);
+                        filterUnit = (ChipGroup) findViewById(R.id.chipGroupByUnit);
+                        final Chip chip = new Chip(HasilPencarianMobilActivity.this);
+                        chip.setText(response.getString(i));
+                        filterUnit.addView(chip);
+//
+//                        ModelFilterUnit modelFilterUnit = new ModelFilterUnit();
+//                        modelFilterUnit.setUnit(jsonObject.getString("unit"));
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        progressDialog.dismiss();
+                    }
+                }
+                adapter.notifyDataSetChanged();
+                progressDialog.dismiss();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e("Volley", error.toString());
+                progressDialog.dismiss();
             }
         });
-        tampilkanMobilKosong.setVisibility(View.GONE);
+        RequestQueue requestQueue = Volley.newRequestQueue(HasilPencarianMobilActivity.this);
+        requestQueue.add(jsonArrayRequest);
     }
 
     // Untuk toolbar
@@ -85,12 +127,66 @@ public class HasilPencarianMobilActivity extends AppCompatActivity {
     }
 
     private void initViews() {
+        tampilanFilter = findViewById(R.id.tampilanFilter);
         tanggalAwal = findViewById(R.id.tanggalAwal);
         tanggalSelesai = findViewById(R.id.tanggalSelesai);
         recyclerView = (RecyclerView) findViewById(R.id.daftarMobilTersedia);
         tampilanLoading = (TextView) findViewById(R.id.tampilanLoading);
         tampilkanMobilKosong = (TextView) findViewById(R.id.tampilkanMobilKosong);
         jumlahMobilTersedia = (TextView) findViewById(R.id.jumlahMobilTersedia);
+        closeFormFilter = (TextView) findViewById(R.id.closeFormFilter);
+    }
+
+    private void setBottomSheetTampilkan() {
+        behavior = BottomSheetBehavior.from(tampilanFilter);
+        behavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
+            @Override
+            public void onStateChanged(@NonNull View bottomSheet, int newState) {
+                switch (newState) {
+                    case BottomSheetBehavior.STATE_DRAGGING:
+                        Log.i("1", "1");
+                        break;
+                    case BottomSheetBehavior.STATE_SETTLING:
+                        Log.i("2", "1");
+                        break;
+                    case BottomSheetBehavior.STATE_EXPANDED:
+                        Log.i("3", "1");
+                        break;
+                    case BottomSheetBehavior.STATE_COLLAPSED:
+                        Log.i("4", "1");
+                        break;
+                    case BottomSheetBehavior.STATE_HIDDEN:
+                        Log.i("5", "1");
+                        break;
+                }
+            }
+
+            @Override
+            public void onSlide(@NonNull View bottomSheet, float slideOffset) {
+                Log.i("6", "6");
+            }
+        });
+
+        LinearLayout tombolFilter = (LinearLayout) findViewById(R.id.tombolFilter);
+        tombolFilter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (behavior.getState() == BottomSheetBehavior.STATE_COLLAPSED) {
+                    behavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+                } else {
+                    behavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+                }
+            }
+        });
+    }
+
+    private void setCloseFormFilter() {
+        closeFormFilter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                behavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+            }
+        });
     }
 
     @SuppressLint("SetTextI18n")
@@ -158,4 +254,5 @@ public class HasilPencarianMobilActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(adapter);
     }
+
 }
