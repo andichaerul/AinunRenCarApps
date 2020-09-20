@@ -36,9 +36,8 @@
                 android:id="@+id/hargaPerhari"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="-15dp"
-                android:fontFamily="@font/mandali"
-                android:text="@string/harga"
+                
+                android:text="Loading..."
                 android:textSize="15sp"
                 android:textStyle="bold" />
 
@@ -46,17 +45,15 @@
                 android:id="@+id/namaMitra"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="-12dp"
-                android:fontFamily="@font/mandali"
-                android:text="namaMitra"
+                android:text="Loading..."
                 android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/namaLengkapUnit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/mandali"
-                android:text="@string/namaunitlengkap"
+                
+                android:text="Loading..."
                 android:textSize="12sp" />
 
             <LinearLayout
@@ -78,9 +75,9 @@
                     android:id="@+id/alamatMitra"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/mandali"
+                    android:singleLine="true"
                     android:gravity="bottom"
-                    android:text="alamatMitra"
+                    android:text="Loading..."
                     android:textSize="12dp" />
 
             </LinearLayout>

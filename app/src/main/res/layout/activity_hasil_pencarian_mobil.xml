@@ -9,152 +9,150 @@
     tools:context=".HasilPencarianMobilActivity"
     tools:ignore="PrivateResource">
 
-        <LinearLayout
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/colorPrimary"
-                android:minHeight="?attr/actionBarSize"
-                app:titleTextColor="#FAFAFA">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/tanggalAwal"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="-5dp"
-                        android:fontFamily="@font/mandali"
-                        android:text="Dari Tanggal : 12-12-2020"
-                        android:textColor="#FFFFFF" />
-
-                    <TextView
-                        android:id="@+id/tanggalSelesai"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/mandali"
-                        android:text="Sampai Tanggal : 12-12-2020"
-                        android:textColor="#FFFFFF" />
-                </LinearLayout>
-            </androidx.appcompat.widget.Toolbar>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/colorPrimary">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/mandali"
-                    android:gravity="center"
-                    android:text="1. Pilih Mobil"
-                    android:textColor="#FFFFFF"
-                    android:textSize="12dp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/mandali"
-                    android:gravity="end"
-                    android:text="2. Detail Mobil"
-                    android:textColor="#FFFFFF"
-                    android:textSize="12dp" />
-            </RelativeLayout>
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:minHeight="?attr/actionBarSize"
+            app:titleTextColor="#FAFAFA">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <RelativeLayout
+                <TextView
+                    android:id="@+id/tanggalAwal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp">
+                    android:layout_marginBottom="5dp"
+                    
+                    android:text="Loading..."
+                    android:textColor="#FFFFFF" />
 
-                    <TextView
-                        android:id="@+id/jumlahMobilTersedia"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/mandali"
-                        android:text="mobilTersedia" />
+                <TextView
+                    android:id="@+id/tanggalSelesai"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    
+                    android:text="Loading..."
+                    android:textColor="#FFFFFF" />
+            </LinearLayout>
+        </androidx.appcompat.widget.Toolbar>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                
+                android:gravity="center"
+                android:text="1. Pilih Mobil"
+                android:textColor="#FFFFFF"
+                android:textSize="12dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                
+                android:gravity="end"
+                android:text="2. Detail Mobil"
+                android:textColor="#FFFFFF"
+                android:textSize="12dp" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp">
+
+                <TextView
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/jumlahMobilTersedia"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Loading..." />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="end">
 
                     <LinearLayout
-                        android:layout_width="match_parent"
+                        android:id="@+id/tombolFilter"
+                        android:layout_width="100dp"
                         android:layout_height="wrap_content"
-                        android:gravity="end">
+                        android:background="@android:color/darker_gray"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
 
-                        <LinearLayout
-                            android:id="@+id/tombolFilter"
-                            android:layout_width="100dp"
+                        <TextView
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:background="@android:color/darker_gray"
-                            android:gravity="center_horizontal|center_vertical"
-                            android:orientation="horizontal"
+                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/flaticon2"
+                            android:text=""
+                            android:textColor="@android:color/white" />
 
-                            android:padding="1dp">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginRight="5dp"
-                                android:fontFamily="@font/flaticon2"
-                                android:text=""
-                                android:textColor="@android:color/white" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/mandali"
-                                android:text="Filter"
-                                android:textColor="@android:color/white" />
-                        </LinearLayout>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Filter"
+                            android:textColor="@android:color/white" />
                     </LinearLayout>
-                </RelativeLayout>
+                </LinearLayout>
+            </RelativeLayout>
 
-                <TextView
-                    android:id="@+id/tampilkanMobilKosong"
+            <TextView
+                android:id="@+id/tampilkanMobilKosong"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="Tidak Mobil Yang Tersedia" />
+
+            <TextView
+                android:id="@+id/tampilanLoading"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="loading..." />
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/daftarMobilTersedia"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center_horizontal|center_vertical"
-                    android:text="Tidak Mobil Yang Tersedia" />
-
-                <TextView
-                    android:id="@+id/tampilanLoading"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center_horizontal|center_vertical"
-                    android:text="loading..." />
-
-                <ScrollView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/daftarMobilTersedia"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-                </ScrollView>
-            </LinearLayout>
+                    android:layout_height="wrap_content" />
+            </ScrollView>
         </LinearLayout>
+    </LinearLayout>
 
 
     <!--    Bottom sheet filter-->
     <LinearLayout
-        android:clickable="true"
         android:id="@+id/tampilanFilter"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorBackGround"
+        android:clickable="true"
         android:orientation="vertical"
         app:behavior_hideable="true"
         app:behavior_peekHeight="0dp"
@@ -174,7 +172,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="7dp"
-                android:fontFamily="@font/mandali"
+                
                 android:text="Close"
                 android:textColor="@color/colorBackGround"
                 android:textSize="16sp" />
@@ -195,7 +193,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:fontFamily="@font/mandali"
+                    
                     android:text="Sortir"
                     android:textSize="18dp" />
 
@@ -205,20 +203,25 @@
                     android:background="?android:attr/listDivider" />
 
                 <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/filterSort"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp">
 
                     <com.google.android.material.chip.Chip
+                        android:id="@+id/hargaTertinggi"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/mandali"
+                        android:checkable="true"
+                        android:clickable="true"
+                        android:focusable="true"
+                        
                         android:text="Harga Tertinggi" />
 
                     <com.google.android.material.chip.Chip
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/mandali"
+                        
                         android:text="Harga Terendah" />
 
                 </com.google.android.material.chip.ChipGroup>
@@ -233,7 +236,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:fontFamily="@font/mandali"
+                    
                     android:text="Hanya menampilkan mobil"
                     android:textSize="18dp" />
 
@@ -261,7 +264,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:fontFamily="@font/mandali"
+                    
                     android:text="Lainnya"
                     android:textSize="18dp" />
 
@@ -278,31 +281,31 @@
                     <com.google.android.material.chip.Chip
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/mandali"
+                        
                         android:text="Layanan Driver" />
 
                     <com.google.android.material.chip.Chip
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/mandali"
+                        
                         android:text="Bahan bakar bensin" />
 
                     <com.google.android.material.chip.Chip
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/mandali"
+                        
                         android:text="Bahan bakar solar" />
 
                     <com.google.android.material.chip.Chip
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/mandali"
+                        
                         android:text="Type Sedan" />
 
                     <com.google.android.material.chip.Chip
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/mandali"
+                        
                         android:text="Lepas Kunci" />
 
                 </com.google.android.material.chip.ChipGroup>

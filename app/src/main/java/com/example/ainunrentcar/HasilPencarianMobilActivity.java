@@ -13,15 +13,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
-import com.bumptech.glide.disklrucache.DiskLruCache;
 import com.example.ainunrentcar.Model.ModelDaftarMobilTersedia;
-import com.example.ainunrentcar.Model.ModelFilterUnit;
 import com.example.ainunrentcar.Service.BaseUrl;
 import com.example.ainunrentcar.Service.TglSql;
 import com.example.ainunrentcar.View.AdapterDaftarMobilTersedia;
@@ -56,7 +55,7 @@ public class HasilPencarianMobilActivity extends AppCompatActivity {
     private BottomSheetBehavior behavior;
     private View tampilanFilter;
     private ChipGroup filterUnit;
-    private String urlUnit = "http://192.168.1.8/ainun-rent/api/v1/find_armada/2020-09-20/2020-09-21/order_by_varian";
+    private Chip hargaTertinggi;
 
     public HasilPencarianMobilActivity() {
     }
@@ -69,48 +68,10 @@ public class HasilPencarianMobilActivity extends AppCompatActivity {
         initViews();
         setTitleToolbar();
         addData();
-        getDataApiMobilTersedia();
-        tampilkanMobilKosong.setVisibility(View.GONE);
+        getDataApiMobilTersedia("null");
         setCloseFormFilter();
         setBottomSheetTampilkan();
-
-
-        final ProgressDialog progressDialog = new ProgressDialog(HasilPencarianMobilActivity.this);
-        progressDialog.setMessage("Loading...");
-        progressDialog.show();
-
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(urlUnit, new Response.Listener<JSONArray>() {
-            @Override
-            public void onResponse(JSONArray response) {
-                Log.d("sasa", response.toString());
-                for (int i = 0; i < response.length(); i++) {
-                    try {
-
-//                        JSONObject jsonObject = response.getJSONObject(i);
-                        filterUnit = (ChipGroup) findViewById(R.id.chipGroupByUnit);
-                        final Chip chip = new Chip(HasilPencarianMobilActivity.this);
-                        chip.setText(response.getString(i));
-                        filterUnit.addView(chip);
-//
-//                        ModelFilterUnit modelFilterUnit = new ModelFilterUnit();
-//                        modelFilterUnit.setUnit(jsonObject.getString("unit"));
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                        progressDialog.dismiss();
-                    }
-                }
-                adapter.notifyDataSetChanged();
-                progressDialog.dismiss();
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.e("Volley", error.toString());
-                progressDialog.dismiss();
-            }
-        });
-        RequestQueue requestQueue = Volley.newRequestQueue(HasilPencarianMobilActivity.this);
-        requestQueue.add(jsonArrayRequest);
+        parsingDaftarUnitOnFilter();
     }
 
     // Untuk toolbar
@@ -127,14 +88,16 @@ public class HasilPencarianMobilActivity extends AppCompatActivity {
     }
 
     private void initViews() {
-        tampilanFilter = findViewById(R.id.tampilanFilter);
-        tanggalAwal = findViewById(R.id.tanggalAwal);
-        tanggalSelesai = findViewById(R.id.tanggalSelesai);
+        tampilanFilter = (View) findViewById(R.id.tampilanFilter);
+        tanggalAwal = (TextView) findViewById(R.id.tanggalAwal);
+        tanggalSelesai = (TextView) findViewById(R.id.tanggalSelesai);
         recyclerView = (RecyclerView) findViewById(R.id.daftarMobilTersedia);
         tampilanLoading = (TextView) findViewById(R.id.tampilanLoading);
         tampilkanMobilKosong = (TextView) findViewById(R.id.tampilkanMobilKosong);
         jumlahMobilTersedia = (TextView) findViewById(R.id.jumlahMobilTersedia);
         closeFormFilter = (TextView) findViewById(R.id.closeFormFilter);
+        tampilkanMobilKosong.setVisibility(View.GONE);
+        hargaTertinggi = (Chip) findViewById(R.id.hargaTertinggi);
     }
 
     private void setBottomSheetTampilkan() {
@@ -144,26 +107,26 @@ public class HasilPencarianMobilActivity extends AppCompatActivity {
             public void onStateChanged(@NonNull View bottomSheet, int newState) {
                 switch (newState) {
                     case BottomSheetBehavior.STATE_DRAGGING:
-                        Log.i("1", "1");
+                        Log.i("sasasa", "1");
                         break;
                     case BottomSheetBehavior.STATE_SETTLING:
-                        Log.i("2", "1");
+                        Log.i("sasasa", "2");
                         break;
                     case BottomSheetBehavior.STATE_EXPANDED:
-                        Log.i("3", "1");
+                        Log.i("sasasa", "3");
                         break;
                     case BottomSheetBehavior.STATE_COLLAPSED:
-                        Log.i("4", "1");
+                        Log.i("sasasa", "4");
                         break;
                     case BottomSheetBehavior.STATE_HIDDEN:
-                        Log.i("5", "1");
+                        Log.i("sasasa", "5");
                         break;
                 }
             }
 
             @Override
             public void onSlide(@NonNull View bottomSheet, float slideOffset) {
-                Log.i("6", "6");
+                Log.i("sasasa", "6");
             }
         });
 
@@ -180,6 +143,7 @@ public class HasilPencarianMobilActivity extends AppCompatActivity {
         });
     }
 
+    //  Event Tombol close pada filter
     private void setCloseFormFilter() {
         closeFormFilter.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -187,8 +151,10 @@ public class HasilPencarianMobilActivity extends AppCompatActivity {
                 behavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
             }
         });
+
     }
 
+    // Set judul halaman
     @SuppressLint("SetTextI18n")
     private void setTitleToolbar() {
         tanggalAwalString = getIntent().getExtras().getString("tanggalAwal");
@@ -197,11 +163,18 @@ public class HasilPencarianMobilActivity extends AppCompatActivity {
         tanggalSelesai.setText("Sampai tanggal " + tanggalSelesaiString);
     }
 
-    private void getDataApiMobilTersedia() {
+    //    Get API Daftar Mobil Tersedia
+    private void getDataApiMobilTersedia(String update) {
         TglSql tglSql = new TglSql();
         String tglAwal = tglSql.tglSql(tanggalAwalString);
         String tglSelesai = tglSql.tglSql(tanggalSelesaiString);
-        String urlApiMobilTersedia = baseUrl.baseUrl + "api/v1/find_armada/" + tglAwal + "/" + tglSelesai + "";
+        String urlApiMobilTersedia;
+        if (update == "update") {
+            urlApiMobilTersedia = baseUrl.baseUrl + "api/v1/find_armada/" + tglAwal + "/" + tglSelesai + "/hargaTerendah/null/null";
+        } else {
+            urlApiMobilTersedia = baseUrl.baseUrl + "api/v1/find_armada/" + tglAwal + "/" + tglSelesai + "/null/null/null";
+        }
+
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(urlApiMobilTersedia, new Response.Listener<JSONArray>() {
             @SuppressLint("SetTextI18n")
             @Override
@@ -242,6 +215,7 @@ public class HasilPencarianMobilActivity extends AppCompatActivity {
         requestQueue.add(jsonArrayRequest);
     }
 
+
     // untuk Mengset Adapter MobilTersedia ke recycleview
     private void addData() {
 
@@ -253,6 +227,43 @@ public class HasilPencarianMobilActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(adapter);
+    }
+
+    private void parsingDaftarUnitOnFilter() {
+        final ProgressDialog progressDialog = new ProgressDialog(HasilPencarianMobilActivity.this);
+        progressDialog.setMessage("Loading...");
+        progressDialog.show();
+        TglSql tglSql = new TglSql();
+        String tglAwal = tglSql.tglSql(tanggalAwalString);
+        String tglSelesai = tglSql.tglSql(tanggalSelesaiString);
+        String urlUnit = baseUrl.baseUrl + "api/v1/find_armada/" + tglAwal + "/" + tglSelesai + "/order_by_varian";
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(urlUnit, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                Log.d("sasa", response.toString());
+                for (int i = 0; i < response.length(); i++) {
+                    try {
+                        filterUnit = (ChipGroup) findViewById(R.id.chipGroupByUnit);
+                        final Chip chip = new Chip(HasilPencarianMobilActivity.this);
+                        chip.setText(response.getString(i));
+                        filterUnit.addView(chip);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        progressDialog.dismiss();
+                    }
+                }
+                adapter.notifyDataSetChanged();
+                progressDialog.dismiss();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e("Volley", error.toString());
+                progressDialog.dismiss();
+            }
+        });
+        RequestQueue requestQueue = Volley.newRequestQueue(HasilPencarianMobilActivity.this);
+        requestQueue.add(jsonArrayRequest);
     }
 
 }
