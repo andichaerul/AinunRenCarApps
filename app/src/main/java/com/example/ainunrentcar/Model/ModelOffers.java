@@ -8,15 +8,17 @@ public class ModelOffers {
     public String judul;
     public String deskripsi;
     public String urlGambar;
+    public String idOffer;
 
     public ModelOffers() {
 
     }
 
-    public ModelOffers(String judul, String deskripsi, String urlGambar) {
+    public ModelOffers(String judul, String deskripsi, String urlGambar, String idOffer) {
         this.judul = judul;
         this.deskripsi = deskripsi;
         this.urlGambar = urlGambar;
+        this.idOffer = idOffer;
     }
 
     public String getJudul() {
@@ -43,5 +45,11 @@ public class ModelOffers {
         this.urlGambar = urlGambar;
     }
 
+    public String getIdOffer() {
+        return idOffer;
+    }
 
+    public void setIdOffer(String idOffer) {
+        this.idOffer = idOffer;
+    }
 }

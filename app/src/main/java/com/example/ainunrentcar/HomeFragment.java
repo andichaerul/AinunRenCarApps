@@ -53,7 +53,7 @@ public class HomeFragment extends Fragment {
     private List<ModelOffers> modelOffersList;
     private RecyclerView.Adapter adapter;
     private BaseUrl baseUrl = new BaseUrl();
-    private String urlSlide = baseUrl.baseUrl + baseUrl.subUrlOffersPromo;
+    private String urlSlide = baseUrl.baseUrl + "api/v1/offers";
     private LinearLayout tanggalAwal;
     private LinearLayout tanggalSelesai;
     private TextView btnSeeAllOffers;
@@ -214,12 +214,13 @@ public class HomeFragment extends Fragment {
                 for (int i = 0; i < response.length(); i++) {
                     try {
                         JSONObject jsonObject = response.getJSONObject(i);
-
                         ModelOffers modelOffers = new ModelOffers();
-                        modelOffers.setJudul(jsonObject.getString("JudulPromo"));
-                        String namaFileGambar = jsonObject.getString("UrlGambar");
+                        modelOffers.setIdOffer(jsonObject.getString("no"));
+                        modelOffers.setJudul(jsonObject.getString("judulPromo"));
+                        String namaFileGambar = jsonObject.getString("urlGambar");
                         modelOffers.setUrlGambar(baseUrl.baseUrl + baseUrl.subUrlImageOffersPromo + namaFileGambar);
                         modelOffersList.add(modelOffers);
+                        Log.d("sasaasa",jsonObject.getString("no"));
                     } catch (JSONException e) {
                         e.printStackTrace();
                         progressDialog.dismiss();
