@@ -204,7 +204,7 @@
                 android:gravity="right">
 
                 <TextView
-                    android:id="@+id/SeeAllOffers"
+                    android:id="@+id/seeAllOffers"
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/padauk_reguler"

@@ -56,6 +56,7 @@ public class HomeFragment extends Fragment {
     private String urlSlide = baseUrl.baseUrl + baseUrl.subUrlOffersPromo;
     private LinearLayout tanggalAwal;
     private LinearLayout tanggalSelesai;
+    private TextView btnSeeAllOffers;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     public HomeFragment() {
@@ -74,6 +75,7 @@ public class HomeFragment extends Fragment {
         intentCariMobil();
         eventKlikPilihTanggalAwal();
         eventKlikPilihTanggalSelesai();
+        intentSeeAllOffers();
         return root;
     }
 
@@ -85,6 +87,7 @@ public class HomeFragment extends Fragment {
         cariMobilTersedia = (LinearLayout) root.findViewById(R.id.cariMobilTersedia);
         tanggalAwal = (LinearLayout) root.findViewById(R.id.tanggalAwal);
         tanggalSelesai = (LinearLayout) root.findViewById(R.id.tanggalSelesai);
+        btnSeeAllOffers = (TextView) root.findViewById(R.id.seeAllOffers);
     }
 
     // Event click pilih tanggal awal
@@ -122,22 +125,15 @@ public class HomeFragment extends Fragment {
         });
     }
 
-
-    // untuk Mengset Adapter Offers (Penawaran) ke recycleview
-    private void setAdapterKeRecycleView() {
-
-        modelOffersList = new ArrayList<ModelOffers>();
-        adapter = new AdapterOffers(getContext(), modelOffersList);
-
-        linearLayoutManager = new LinearLayoutManager(getContext());
-        linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
-        dividerItemDecoration = new DividerItemDecoration(mList.getContext(), linearLayoutManager.getOrientation());
-
-        mList.setHasFixedSize(true);
-        mList.setLayoutManager(linearLayoutManager);
-        mList.setAdapter(adapter);
+    private void intentSeeAllOffers() {
+        btnSeeAllOffers.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getContext(), SeeAllOffersActivity.class);
+                startActivity(i);
+            }
+        });
     }
-
 
     // Untuk mengset value tgl awal dan tgl selesai pada saat aplikasi awal dibuka
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -243,4 +239,18 @@ public class HomeFragment extends Fragment {
         requestQueue.add(jsonArrayRequest);
     }
 
+    // untuk Mengset Adapter Offers (Penawaran) ke recycleview
+    private void setAdapterKeRecycleView() {
+
+        modelOffersList = new ArrayList<ModelOffers>();
+        adapter = new AdapterOffers(getContext(), modelOffersList);
+
+        linearLayoutManager = new LinearLayoutManager(getContext());
+        linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        dividerItemDecoration = new DividerItemDecoration(mList.getContext(), linearLayoutManager.getOrientation());
+
+        mList.setHasFixedSize(true);
+        mList.setLayoutManager(linearLayoutManager);
+        mList.setAdapter(adapter);
+    }
 }
