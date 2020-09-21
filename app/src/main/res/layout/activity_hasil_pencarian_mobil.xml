@@ -32,7 +32,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="5dp"
-                    
+
                     android:text="Loading..."
                     android:textColor="#FFFFFF" />
 
@@ -40,7 +40,7 @@
                     android:id="@+id/tanggalSelesai"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    
+
                     android:text="Loading..."
                     android:textColor="#FFFFFF" />
             </LinearLayout>
@@ -48,14 +48,13 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="25dp"
             android:background="@color/colorPrimary">
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                
-                android:gravity="center"
+                android:layout_height="25dp"
+                android:gravity="center_vertical|center_horizontal"
                 android:text="1. Pilih Mobil"
                 android:textColor="#FFFFFF"
                 android:textSize="12dp"
@@ -63,9 +62,8 @@
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                
-                android:gravity="end"
+                android:layout_height="25dp"
+                android:gravity="center_vertical|end"
                 android:text="2. Detail Mobil"
                 android:textColor="#FFFFFF"
                 android:textSize="12dp" />
@@ -82,10 +80,10 @@
                 android:layout_margin="10dp">
 
                 <TextView
-                    android:layout_marginTop="10dp"
                     android:id="@+id/jumlahMobilTersedia"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
                     android:text="Loading..." />
 
                 <LinearLayout
@@ -169,10 +167,10 @@
             <TextView
                 android:id="@+id/closeFormFilter"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="50dp"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="7dp"
-                
+                android:layout_marginTop="0dp"
+                android:gravity="center_vertical"
                 android:text="Close"
                 android:textColor="@color/colorBackGround"
                 android:textSize="16sp" />
@@ -187,13 +185,14 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:orientation="vertical">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    
+                    android:layout_marginBottom="10dp"
                     android:text="Sortir"
                     android:textSize="18dp" />
 
@@ -215,13 +214,14 @@
                         android:checkable="true"
                         android:clickable="true"
                         android:focusable="true"
-                        
                         android:text="Harga Tertinggi" />
 
                     <com.google.android.material.chip.Chip
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        
+                        android:checkable="true"
+                        android:clickable="true"
+                        android:focusable="true"
                         android:text="Harga Terendah" />
 
                 </com.google.android.material.chip.ChipGroup>
@@ -230,13 +230,14 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:orientation="vertical">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    
+                    android:layout_marginBottom="10dp"
                     android:text="Hanya menampilkan mobil"
                     android:textSize="18dp" />
 
@@ -258,13 +259,14 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:orientation="vertical">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    
+                    android:layout_marginBottom="10dp"
                     android:text="Lainnya"
                     android:textSize="18dp" />
 
@@ -281,31 +283,41 @@
                     <com.google.android.material.chip.Chip
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        
+                        android:checkable="true"
+                        android:clickable="true"
+                        android:focusable="true"
                         android:text="Layanan Driver" />
 
                     <com.google.android.material.chip.Chip
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        
+                        android:checkable="true"
+                        android:clickable="true"
+                        android:focusable="true"
                         android:text="Bahan bakar bensin" />
 
                     <com.google.android.material.chip.Chip
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        
+                        android:checkable="true"
+                        android:clickable="true"
+                        android:focusable="true"
                         android:text="Bahan bakar solar" />
 
                     <com.google.android.material.chip.Chip
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        
+                        android:checkable="true"
+                        android:clickable="true"
+                        android:focusable="true"
                         android:text="Type Sedan" />
 
                     <com.google.android.material.chip.Chip
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        
+                        android:checkable="true"
+                        android:clickable="true"
+                        android:focusable="true"
                         android:text="Lepas Kunci" />
 
                 </com.google.android.material.chip.ChipGroup>
