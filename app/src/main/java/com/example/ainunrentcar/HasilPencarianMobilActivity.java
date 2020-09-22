@@ -169,7 +169,7 @@ public class HasilPencarianMobilActivity extends AppCompatActivity {
         String tglAwal = tglSql.tglSql(tanggalAwalString);
         String tglSelesai = tglSql.tglSql(tanggalSelesaiString);
         String urlApiMobilTersedia;
-        if (update == "update") {
+        if (update.equals("update")) {
             urlApiMobilTersedia = baseUrl.baseUrl + "api/v1/find_armada/" + tglAwal + "/" + tglSelesai + "/hargaTerendah/null/null";
         } else {
             urlApiMobilTersedia = baseUrl.baseUrl + "api/v1/find_armada/" + tglAwal + "/" + tglSelesai + "/null/null/null";
@@ -230,13 +230,14 @@ public class HasilPencarianMobilActivity extends AppCompatActivity {
     }
 
     private void parsingDaftarUnitOnFilter() {
-        final ProgressDialog progressDialog = new ProgressDialog(HasilPencarianMobilActivity.this);
-        progressDialog.setMessage("Loading...");
-        progressDialog.show();
+//        final ProgressDialog progressDialog = new ProgressDialog(HasilPencarianMobilActivity.this);
+//        progressDialog.setMessage("Loading...");
+//        progressDialog.show();
         TglSql tglSql = new TglSql();
         String tglAwal = tglSql.tglSql(tanggalAwalString);
         String tglSelesai = tglSql.tglSql(tanggalSelesaiString);
-        String urlUnit = baseUrl.baseUrl + "api/v1/find_armada/" + tglAwal + "/" + tglSelesai + "/order_by_varian";
+        String urlUnit = baseUrl.urlFilterGroupByUnit(tglAwal, tglSelesai);
+        Log.d("aaaaa", urlUnit);
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(urlUnit, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
@@ -244,22 +245,27 @@ public class HasilPencarianMobilActivity extends AppCompatActivity {
                 for (int i = 0; i < response.length(); i++) {
                     try {
                         filterUnit = (ChipGroup) findViewById(R.id.chipGroupByUnit);
+
                         final Chip chip = new Chip(HasilPencarianMobilActivity.this);
                         chip.setText(response.getString(i));
+                        chip.setCheckable(true);
+                        chip.setFocusable(true);
+                        chip.setClickable(true);
                         filterUnit.addView(chip);
+
                     } catch (JSONException e) {
                         e.printStackTrace();
-                        progressDialog.dismiss();
+//                        progressDialog.dismiss();
                     }
                 }
                 adapter.notifyDataSetChanged();
-                progressDialog.dismiss();
+//                progressDialog.dismiss();
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.e("Volley", error.toString());
-                progressDialog.dismiss();
+//                progressDialog.dismiss();
             }
         });
         RequestQueue requestQueue = Volley.newRequestQueue(HasilPencarianMobilActivity.this);

@@ -250,10 +250,7 @@
                     android:id="@+id/chipGroupByUnit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp">
-
-
-                </com.google.android.material.chip.ChipGroup>
+                    android:layout_marginLeft="10dp"></com.google.android.material.chip.ChipGroup>
             </LinearLayout>
 
             <LinearLayout
@@ -323,7 +320,19 @@
                 </com.google.android.material.chip.ChipGroup>
             </LinearLayout>
 
-        </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:gravity="bottom"
+                android:orientation="vertical">
 
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Simpan" />
+            </LinearLayout>
+        </LinearLayout>
     </LinearLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
