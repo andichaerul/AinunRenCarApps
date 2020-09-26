@@ -9,5 +9,9 @@ public class BaseUrl {
     public String urlFilterGroupByUnit(String tglStart, String tglSelesai) {
         return baseUrl + "api/v1/find_armada/group_by_varian/" + tglStart + "/" + tglSelesai;
     }
+
+    public String urlHasilPencarianArmada(String tglStart, String tglSelesai, String sortBy, String unitGroup, String lainnya) {
+        return baseUrl + "api/v1/find_armada/" + tglStart + "/" + tglSelesai + "/" + sortBy + "/" + unitGroup + "/" + lainnya;
+    }
 }
 
