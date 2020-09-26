@@ -3,14 +3,11 @@ package com.example.ainunrentcar;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.LayoutInflaterCompat;
 import androidx.fragment.app.Fragment;
 
 import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
-
-import androidx.appcompat.widget.Toolbar;
 
 //import com.mikepenz.iconics.context.IconicsLayoutInflater2;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -35,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void menuBottom() {
         fragmentBottomMenu(new HomeFragment());
-
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @RequiresApi(api = Build.VERSION_CODES.N)
@@ -50,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 switch (item.getItemId()) {
                     case R.id.pemesanan:
-                        fragment = new HomeFragment();
+                        fragment = new DaftarPemesananBelumLoginFragment();
                 }
                 switch (item.getItemId()) {
                     case R.id.bantuan:
