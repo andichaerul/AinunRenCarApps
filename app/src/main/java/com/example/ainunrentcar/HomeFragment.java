@@ -160,7 +160,7 @@ public class HomeFragment extends Fragment {
             setTanggal = Integer.parseInt(tglSelesaiArr[0]);
             setTanggalMinimalSelesaiRental(newCalendar);
         }
-        datePickerDialog = new DatePickerDialog(getContext(), new DatePickerDialog.OnDateSetListener() {
+        datePickerDialog = new DatePickerDialog(getContext(), R.style.DialogTheme, new DatePickerDialog.OnDateSetListener() {
 
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
