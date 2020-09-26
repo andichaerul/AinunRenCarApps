@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/cardview_shadow_end_color"
+    android:background="@color/warnaBackgroundUtama"
     android:orientation="vertical"
     tools:context=".HasilPencarianMobilActivity"
     tools:ignore="PrivateResource">
@@ -77,7 +77,8 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp">
+                android:layout_margin="10dp"
+                app:layout_scrollFlags="scroll|enterAlways">
 
                 <TextView
                     android:id="@+id/jumlahMobilTersedia"
@@ -87,6 +88,7 @@
                     android:text="Loading..." />
 
                 <LinearLayout
+
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="end">
@@ -138,7 +140,8 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/daftarMobilTersedia"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    app:layout_behavior="@string/appbar_scrolling_view_behavior" />
             </ScrollView>
         </LinearLayout>
     </LinearLayout>
@@ -149,7 +152,7 @@
         android:id="@+id/tampilanFilter"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorBackGround"
+        android:background="@color/cardview_light_background"
         android:clickable="true"
         android:orientation="vertical"
         app:behavior_hideable="true"
@@ -161,7 +164,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="@android:color/darker_gray"
+            android:background="@color/colorPrimary"
             android:orientation="horizontal">
 
             <TextView
@@ -172,7 +175,7 @@
                 android:layout_marginTop="0dp"
                 android:gravity="center_vertical"
                 android:text="Close"
-                android:textColor="@color/colorBackGround"
+                android:textColor="@color/warnaBackgroundUtama"
                 android:textSize="16sp" />
         </LinearLayout>
 
@@ -214,7 +217,8 @@
                         android:checkable="true"
                         android:clickable="true"
                         android:focusable="true"
-                        android:text="Harga Tertinggi" />
+                        android:tag="hargaTertinggi"
+                        android:text="@string/hargaTertinggi" />
 
                     <com.google.android.material.chip.Chip
                         android:layout_width="wrap_content"
@@ -222,6 +226,7 @@
                         android:checkable="true"
                         android:clickable="true"
                         android:focusable="true"
+                        android:tag="sss"
                         android:text="Harga Terendah" />
 
                 </com.google.android.material.chip.ChipGroup>
@@ -329,6 +334,7 @@
                 android:orientation="vertical">
 
                 <Button
+                    android:id="@+id/tombolSimpanFilter"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Simpan" />

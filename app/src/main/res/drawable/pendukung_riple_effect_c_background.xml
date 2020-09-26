@@ -4,7 +4,7 @@
     <item>
         <shape>
             <padding android:padding="1dp" />
-            <solid android:color="@color/colorBackGround" />
+            <solid android:color="@color/warnaBackgroundUtama" />
         </shape>
     </item>
 </ripple>

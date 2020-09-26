@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#8D2724</color>
+    <color name="colorPrimary">#A4322E</color>
     <color name="colorPrimaryDark">#7CB342</color>
     <color name="colorAccent">#03DAC5</color>
     <color name="colorButtonPrimary">#F4511E</color>
-    <color name="colorBackGround">#F4EFEF</color>
+    <color name="warnaBackgroundUtama">@color/default_circle_indicator_stroke_color</color>
     <color name="colorFont0">#353535</color>
 
 </resources>

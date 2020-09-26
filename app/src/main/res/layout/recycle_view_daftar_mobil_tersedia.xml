@@ -57,6 +57,7 @@
                 android:textSize="12sp" />
 
             <LinearLayout
+                android:layout_marginRight="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
