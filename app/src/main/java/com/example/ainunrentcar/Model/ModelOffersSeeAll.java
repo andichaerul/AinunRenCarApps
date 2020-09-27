@@ -4,8 +4,9 @@ public class ModelOffersSeeAll {
     public String judulPromo;
     public String deskripsiPromo;
     public String gambarPromo;
+    public String idOffer;
 
-    public ModelOffersSeeAll(){
+    public ModelOffersSeeAll() {
 
     }
 
@@ -13,6 +14,14 @@ public class ModelOffersSeeAll {
         this.judulPromo = judulPromo;
         this.deskripsiPromo = deskripsiPromo;
         this.gambarPromo = gambarPromo;
+    }
+
+    public String getIdOffer() {
+        return idOffer;
+    }
+
+    public void setIdOffer(String idOffer) {
+        this.idOffer = idOffer;
     }
 
     public String getJudulPromo() {

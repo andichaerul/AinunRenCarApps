@@ -87,6 +87,7 @@ public class SeeAllOffersActivity extends AppCompatActivity {
                         }
 
                         ModelOffersSeeAll modelOffersSeeAll = new ModelOffersSeeAll();
+                        modelOffersSeeAll.setIdOffer(jsonObject.getString("no"));
                         modelOffersSeeAll.setJudulPromo(jsonObject.getString("judulPromo"));
                         String namaFileGambar = jsonObject.getString("urlGambar");
                         modelOffersSeeAll.setGambarPromo(baseUrl.baseUrl + baseUrl.subUrlImageOffersPromo + namaFileGambar);

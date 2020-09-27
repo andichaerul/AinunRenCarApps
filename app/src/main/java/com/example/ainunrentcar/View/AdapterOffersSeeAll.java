@@ -2,16 +2,19 @@ package com.example.ainunrentcar.View;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.example.ainunrentcar.DetailOffersActivity;
 import com.example.ainunrentcar.Model.ModelOffersSeeAll;
 import com.example.ainunrentcar.R;
 
@@ -55,11 +58,22 @@ public class AdapterOffersSeeAll extends RecyclerView.Adapter<AdapterOffersSeeAl
     public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView judulPromo;
         public ImageView imagePromo;
+        public CardView untukClickSlide;
 
         public ViewHolder(View itemView) {
             super(itemView);
             imagePromo = itemView.findViewById(R.id.imagePromo);
             judulPromo = itemView.findViewById(R.id.judulPromo);
+            untukClickSlide = itemView.findViewById(R.id.slideOffers);
+            untukClickSlide.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    String idOffers = list.get(getAdapterPosition()).idOffer;
+                    Intent i = new Intent(context, DetailOffersActivity.class);
+                    i.putExtra("idOffers", idOffers);
+                    context.startActivity(i);
+                }
+            });
         }
     }
 
