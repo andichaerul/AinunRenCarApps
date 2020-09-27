@@ -92,7 +92,7 @@ public class HasilPencarianMobilActivity extends AppCompatActivity {
                 if (currentFirstVisible > firstVisibleInListview) {
                     Log.i("RecyclerView scrolled: ", "scroll up!");
                     behavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
-                } else if (currentFirstVisible < firstVisibleInListview){
+                } else if (currentFirstVisible < firstVisibleInListview) {
                     Log.i("RecyclerView scrolled: ", "scroll down!");
                     behavior.setState(BottomSheetBehavior.STATE_HIDDEN);
                 }
@@ -276,6 +276,7 @@ public class HasilPencarianMobilActivity extends AppCompatActivity {
                             modelDaftarMobilTersedia.setHargaPerhari(jsonObject.getString("harga"));
                             modelDaftarMobilTersedia.setAlamatMitra(jsonObject.getString("alamatMitra"));
                             modelDaftarMobilTersedia.setUrlImgUnit(baseUrl.baseUrl + baseUrl.subUrlImageUnit + urlGambar);
+                            modelDaftarMobilTersedia.setIdMobil(jsonObject.getString("idMobil"));
                             modelDaftarMobilTersediaList.add(modelDaftarMobilTersedia);
                         } catch (JSONException e) {
                             e.printStackTrace();

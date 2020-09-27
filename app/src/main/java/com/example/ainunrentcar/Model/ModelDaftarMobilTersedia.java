@@ -9,17 +9,27 @@ public class ModelDaftarMobilTersedia {
     private String namaLengkapUnit;
     private String alamatMitra;
     private String urlImgUnit;
+    public String idMobil;
 
     public ModelDaftarMobilTersedia() {
 
     }
 
-    public ModelDaftarMobilTersedia(String namaMitra, String namaLengkapUnit, String hargaPerhari, String alamatMitra, String urlImgUnit) {
+    public ModelDaftarMobilTersedia(String namaMitra, String namaLengkapUnit, String hargaPerhari, String alamatMitra, String urlImgUnit, String idMobil) {
         this.namaMitra = namaMitra;
         this.namaLengkapUnit = namaLengkapUnit;
         this.hargaPerhari = hargaPerhari;
         this.alamatMitra = alamatMitra;
         this.urlImgUnit = urlImgUnit;
+        this.idMobil = idMobil;
+    }
+
+    public String getIdMobil() {
+        return idMobil;
+    }
+
+    public void setIdMobil(String idMobil) {
+        this.idMobil = idMobil;
     }
 
     public String getUrlImgUnit() {
