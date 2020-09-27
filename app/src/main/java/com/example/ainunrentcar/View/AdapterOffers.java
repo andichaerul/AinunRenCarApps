@@ -50,7 +50,6 @@ public class AdapterOffers extends RecyclerView.Adapter<AdapterOffers.ViewHolder
                 .apply(new RequestOptions().centerCrop())
                 .into(holder.imgSlide);
         holder.textJudul.setText(String.valueOf(modelOffers.getJudul()));
-        Log.d("cdsfdsfsd", String.valueOf(modelOffers.getIdOffer()));
     }
 
 //    private String getIdOffers(String value) {

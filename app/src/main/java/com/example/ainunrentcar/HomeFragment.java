@@ -224,7 +224,6 @@ public class HomeFragment extends Fragment {
                         String namaFileGambar = jsonObject.getString("urlGambar");
                         modelOffers.setUrlGambar(baseUrl.baseUrl + baseUrl.subUrlImageOffersPromo + namaFileGambar);
                         modelOffersList.add(modelOffers);
-                        Log.d("sasaasa", jsonObject.getString("no"));
                     } catch (JSONException e) {
                         e.printStackTrace();
 //                        progressDialog.dismiss();
