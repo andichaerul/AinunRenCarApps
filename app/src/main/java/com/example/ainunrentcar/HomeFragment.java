@@ -11,7 +11,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.DatePicker;
+import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import androidx.annotation.RequiresApi;
@@ -57,6 +59,7 @@ public class HomeFragment extends Fragment {
     private LinearLayout tanggalAwal;
     private LinearLayout tanggalSelesai;
     private TextView btnSeeAllOffers;
+    private HorizontalScrollView loadingOffers;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     public HomeFragment() {
@@ -88,6 +91,7 @@ public class HomeFragment extends Fragment {
         tanggalAwal = (LinearLayout) root.findViewById(R.id.tanggalAwal);
         tanggalSelesai = (LinearLayout) root.findViewById(R.id.tanggalSelesai);
         btnSeeAllOffers = (TextView) root.findViewById(R.id.seeAllOffers);
+        loadingOffers = (HorizontalScrollView) root.findViewById(R.id.loadingOffers);
     }
 
     // Event click pilih tanggal awal
@@ -204,9 +208,9 @@ public class HomeFragment extends Fragment {
 
     // Mengambil data api slide offers (Penawaran)
     private void getDataApiOffers() {
-        final ProgressDialog progressDialog = new ProgressDialog(getContext());
-        progressDialog.setMessage("Loading...");
-        progressDialog.show();
+//        final ProgressDialog progressDialog = new ProgressDialog(getContext());
+//        progressDialog.setMessage("Loading...");
+//        progressDialog.show();
 
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(urlSlide, new Response.Listener<JSONArray>() {
             @Override
@@ -223,17 +227,19 @@ public class HomeFragment extends Fragment {
                         Log.d("sasaasa", jsonObject.getString("no"));
                     } catch (JSONException e) {
                         e.printStackTrace();
-                        progressDialog.dismiss();
+//                        progressDialog.dismiss();
                     }
                 }
                 adapter.notifyDataSetChanged();
-                progressDialog.dismiss();
+//                progressDialog.dismiss();
+                loadingOffers.setVisibility(View.GONE);
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.e("Volley", error.toString());
-                progressDialog.dismiss();
+//                progressDialog.dismiss();
+                loadingOffers.setVisibility(View.GONE);
             }
         });
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());

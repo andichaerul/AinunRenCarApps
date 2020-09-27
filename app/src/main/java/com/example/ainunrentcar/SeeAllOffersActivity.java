@@ -10,6 +10,7 @@ import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -36,6 +37,7 @@ public class SeeAllOffersActivity extends AppCompatActivity {
     private LinearLayoutManager linearLayoutManager;
     private DividerItemDecoration dividerItemDecoration;
     private RecyclerView mList;
+    private TextView loadingOffersSeeAll;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,12 +66,13 @@ public class SeeAllOffersActivity extends AppCompatActivity {
 
     private void initViews() {
         mList = (RecyclerView) findViewById(R.id.recyclerView);
+        loadingOffersSeeAll = (TextView) findViewById(R.id.loadingOffersSeeAll);
     }
 
     private void getDataApiOffersAll() {
-        final ProgressDialog progressDialog = new ProgressDialog(SeeAllOffersActivity.this);
-        progressDialog.setMessage("Loading...");
-        progressDialog.show();
+//        final ProgressDialog progressDialog = new ProgressDialog(SeeAllOffersActivity.this);
+//        progressDialog.setMessage("Loading...");
+//        progressDialog.show();
 
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(urlList, new Response.Listener<JSONArray>() {
             @Override
@@ -90,17 +93,20 @@ public class SeeAllOffersActivity extends AppCompatActivity {
                         modelOffersSeeAllList.add(modelOffersSeeAll);
                     } catch (JSONException e) {
                         e.printStackTrace();
-                        progressDialog.dismiss();
+//                        progressDialog.dismiss();
+                        loadingOffersSeeAll.setVisibility(View.GONE);
                     }
                 }
                 adapter.notifyDataSetChanged();
-                progressDialog.dismiss();
+//                progressDialog.dismiss();
+                loadingOffersSeeAll.setVisibility(View.GONE);
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.e("Volley", error.toString());
-                progressDialog.dismiss();
+//                progressDialog.dismiss();
+                loadingOffersSeeAll.setVisibility(View.GONE);
             }
         });
 

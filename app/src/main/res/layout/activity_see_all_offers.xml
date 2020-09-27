@@ -18,6 +18,12 @@
             android:background="@color/colorPrimary"
             android:minHeight="?attr/actionBarSize"
             app:titleTextColor="#FAFAFA" />
+        <TextView
+            android:id="@+id/loadingOffersSeeAll"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="Loading..."
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
