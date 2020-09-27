@@ -38,23 +38,23 @@
                     android:layout_height="200dp" />
 
                 <TextView
-                    android:justificationMode="inter_word"
                     android:id="@+id/judulContentSlide"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
+                    android:justificationMode="inter_word"
                     android:text="Loading..."
                     android:textSize="20dp"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:justificationMode="inter_word"
                     android:id="@+id/isiContentSlide"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    
+                    android:justificationMode="inter_word"
+
                     android:text="Loading..." />
             </LinearLayout>
         </ScrollView>

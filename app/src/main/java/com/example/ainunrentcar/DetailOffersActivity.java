@@ -62,10 +62,8 @@ public class DetailOffersActivity extends AppCompatActivity {
         progressDialog.setMessage("Loading...");
         progressDialog.show();
         String idOffers = getIntent().getExtras().getString("idOffers");
-        Log.d("dsvdvc",idOffers);
         final BaseUrl baseUrl = new BaseUrl();
         String apiUrl = baseUrl.baseUrl + "api/v1/offers/detail/" + idOffers;
-        Log.d("dsvdvc",apiUrl);
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(apiUrl, new Response.Listener<JSONArray>() {
             @SuppressLint("CheckResult")
             @Override
@@ -84,7 +82,6 @@ public class DetailOffersActivity extends AppCompatActivity {
                         RequestOptions requestOptions = new RequestOptions();
                         requestOptions.placeholder(R.drawable.image_null);
                         requestOptions.error(R.drawable.image_null);
-                        Log.d("dsadaa",baseUrl.baseUrl + "public/assets/img/gambar_promo/" + imgUrl);
                         Glide.with(DetailOffersActivity.this)
                                 .setDefaultRequestOptions(requestOptions)
                                 .load(baseUrl.baseUrl + "public/assets/img/gambar_promo/" + imgUrl)
