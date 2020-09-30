@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.cardview.widget.CardView;
@@ -66,7 +67,7 @@ public class AdapterDaftarMobilTersedia extends RecyclerView.Adapter<AdapterDaft
     public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView namaMitra, namaLengkapUnit, hargaPerhari, alamatMitra;
         public ImageView urlImgUnit;
-        public CardView clickPilihMobil;
+        public LinearLayout clickPilihMobil;
 
         public ViewHolder(View itemView) {
             super(itemView);
