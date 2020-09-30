@@ -147,17 +147,18 @@
 
     <!--    Bottom sheet filter-->
     <LinearLayout
+        android:background="@drawable/background_2"
         android:id="@+id/tampilanFilter"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/cardview_light_background"
         android:clickable="true"
-        android:elevation="50dp"
+        android:elevation="5dp"
         android:orientation="vertical"
         app:behavior_hideable="true"
         app:behavior_peekHeight="50dp"
         app:layout_behavior="@string/bottom_sheet_behavior"
-        tools:ignore="PrivateResource">
+        tools:ignore="PrivateResource"
+        android:focusable="true">
 
         <!--Toolbar bottom sheet-->
         <LinearLayout
@@ -166,6 +167,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:textStyle="bold"
                 android:layout_marginTop="7dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -174,12 +176,13 @@
                 android:text="" />
 
             <TextView
+                android:textStyle="bold"
                 android:id="@+id/closeFormFilter"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_gravity="center_horizontal"
                 android:gravity="center_horizontal"
-                android:text="Filter"
+                android:text="Filter &amp; Urutkan"
                 android:textSize="16sp" />
         </LinearLayout>
 
