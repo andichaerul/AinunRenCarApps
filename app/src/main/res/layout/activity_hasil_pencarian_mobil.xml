@@ -147,18 +147,18 @@
 
     <!--    Bottom sheet filter-->
     <LinearLayout
-        android:background="@drawable/background_2"
         android:id="@+id/tampilanFilter"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/background_2"
         android:clickable="true"
         android:elevation="5dp"
+        android:focusable="true"
         android:orientation="vertical"
         app:behavior_hideable="true"
         app:behavior_peekHeight="50dp"
         app:layout_behavior="@string/bottom_sheet_behavior"
-        tools:ignore="PrivateResource"
-        android:focusable="true">
+        tools:ignore="PrivateResource">
 
         <!--Toolbar bottom sheet-->
         <LinearLayout
@@ -167,23 +167,23 @@
             android:orientation="vertical">
 
             <TextView
-                android:textStyle="bold"
-                android:layout_marginTop="7dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
                 android:fontFamily="@font/entypo"
                 android:gravity="center_horizontal"
-                android:text="" />
+                android:text=""
+                android:textStyle="bold" />
 
             <TextView
-                android:textStyle="bold"
                 android:id="@+id/closeFormFilter"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_gravity="center_horizontal"
                 android:gravity="center_horizontal"
                 android:text="Filter &amp; Urutkan"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <!--Body Bottom Sheet Filter-->
@@ -198,13 +198,33 @@
                 android:layout_marginTop="10dp"
                 android:orientation="vertical">
 
-                <TextView
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:text="Sortir"
-                    android:textSize="18dp" />
+                    android:layout_height="40dp"
+                    android:background="@color/warnaBackgroundUtama"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/ionicons"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:text=""
+                        android:textSize="18dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="11dp"
+                        android:layout_weight="10"
+                        android:gravity="center_vertical"
+                        android:text="Sortir"
+                        android:textSize="18dp" />
+                </LinearLayout>
+
 
                 <View
                     android:layout_width="match_parent"
@@ -246,13 +266,32 @@
                 android:layout_marginTop="10dp"
                 android:orientation="vertical">
 
-                <TextView
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:text="Hanya menampilkan mobil"
-                    android:textSize="18dp" />
+                    android:layout_height="40dp"
+                    android:background="@color/warnaBackgroundUtama"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/ionicons"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:text=""
+                        android:textSize="18dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="11dp"
+                        android:layout_weight="10"
+                        android:gravity="center_vertical"
+                        android:text="Hanya Menampilkan"
+                        android:textSize="18dp" />
+                </LinearLayout>
 
                 <View
                     android:layout_width="match_parent"
@@ -263,7 +302,9 @@
                     android:id="@+id/chipGroupByUnit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"></com.google.android.material.chip.ChipGroup>
+                    android:layout_marginLeft="10dp">
+
+                </com.google.android.material.chip.ChipGroup>
             </LinearLayout>
 
             <LinearLayout
