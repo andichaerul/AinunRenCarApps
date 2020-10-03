@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.annotation.SuppressLint;
-import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -19,6 +18,7 @@ import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.ainunrentcar.Service.BaseUrl;
+import com.facebook.shimmer.ShimmerFrameLayout;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -28,6 +28,7 @@ public class DetailOffersActivity extends AppCompatActivity {
     private TextView judulSlide;
     private TextView isiContentSlide;
     private ImageView imgSlide;
+    private ShimmerFrameLayout shimmerFrameLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,16 +56,16 @@ public class DetailOffersActivity extends AppCompatActivity {
         judulSlide = (TextView) findViewById(R.id.judulContentSlide);
         isiContentSlide = (TextView) findViewById(R.id.isiContentSlide);
         imgSlide = (ImageView) findViewById(R.id.imgSlide);
+        shimmerFrameLayout = (ShimmerFrameLayout) findViewById(R.id.shimmer_detail_offers);
     }
 
     private void getDataApiOffers() {
-        final ProgressDialog progressDialog = new ProgressDialog(DetailOffersActivity.this);
-        progressDialog.setMessage("Loading...");
-        progressDialog.show();
         String idOffers = getIntent().getExtras().getString("idOffers");
         final BaseUrl baseUrl = new BaseUrl();
         String apiUrl = baseUrl.baseUrl + "api/v1/offers/detail/" + idOffers;
+
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(apiUrl, new Response.Listener<JSONArray>() {
+
             @SuppressLint("CheckResult")
             @Override
             public void onResponse(JSONArray response) {
@@ -89,16 +90,18 @@ public class DetailOffersActivity extends AppCompatActivity {
                                 .into(imgSlide);
                     } catch (JSONException e) {
                         e.printStackTrace();
-                        progressDialog.dismiss();
+//                        progressDialog.dismiss();
+
                     }
                 }
-                progressDialog.dismiss();
+//                progressDialog.dismiss();
+                shimmerFrameLayout.setVisibility(View.GONE);
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.e("Volley", error.toString());
-                progressDialog.dismiss();
+//                progressDialog.dismiss();
             }
         });
         RequestQueue requestQueue = Volley.newRequestQueue(DetailOffersActivity.this);
