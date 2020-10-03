@@ -72,7 +72,7 @@ public class SeeAllOffersActivity extends AppCompatActivity {
     }
 
     private void getDataApiOffersAll() {
-        shimmerFrameLayout.startShimmerAnimation();
+        shimmerFrameLayout.startShimmer();
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(urlList, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {

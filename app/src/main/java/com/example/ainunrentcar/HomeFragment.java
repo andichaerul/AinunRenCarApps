@@ -206,7 +206,7 @@ public class HomeFragment extends Fragment {
 
     // Mengambil data api slide offers (Penawaran)
     private void getDataApiOffers() {
-        shimmerSlideHome.startShimmerAnimation();
+        shimmerSlideHome.startShimmer();
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(urlSlide, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
