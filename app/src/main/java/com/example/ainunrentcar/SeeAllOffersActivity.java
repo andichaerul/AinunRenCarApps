@@ -20,6 +20,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.ainunrentcar.Model.ModelOffersSeeAll;
 import com.example.ainunrentcar.Service.BaseUrl;
 import com.example.ainunrentcar.View.AdapterOffersSeeAll;
+import com.facebook.shimmer.ShimmerFrameLayout;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -37,7 +38,8 @@ public class SeeAllOffersActivity extends AppCompatActivity {
     private LinearLayoutManager linearLayoutManager;
     private DividerItemDecoration dividerItemDecoration;
     private RecyclerView mList;
-    private TextView loadingOffersSeeAll;
+
+    private ShimmerFrameLayout shimmerFrameLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,14 +68,11 @@ public class SeeAllOffersActivity extends AppCompatActivity {
 
     private void initViews() {
         mList = (RecyclerView) findViewById(R.id.recyclerView);
-        loadingOffersSeeAll = (TextView) findViewById(R.id.loadingOffersSeeAll);
+        shimmerFrameLayout = (ShimmerFrameLayout) findViewById(R.id.shimmer_see_all_offers);
     }
 
     private void getDataApiOffersAll() {
-//        final ProgressDialog progressDialog = new ProgressDialog(SeeAllOffersActivity.this);
-//        progressDialog.setMessage("Loading...");
-//        progressDialog.show();
-
+        shimmerFrameLayout.startShimmerAnimation();
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(urlList, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
@@ -95,19 +94,22 @@ public class SeeAllOffersActivity extends AppCompatActivity {
                     } catch (JSONException e) {
                         e.printStackTrace();
 //                        progressDialog.dismiss();
-                        loadingOffersSeeAll.setVisibility(View.GONE);
+//                        shimmerFrameLayout.setVisibility(View.GONE);
+
                     }
                 }
                 adapter.notifyDataSetChanged();
 //                progressDialog.dismiss();
-                loadingOffersSeeAll.setVisibility(View.GONE);
+                shimmerFrameLayout.setVisibility(View.GONE);
+
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.e("Volley", error.toString());
 //                progressDialog.dismiss();
-                loadingOffersSeeAll.setVisibility(View.GONE);
+//                shimmerFrameLayout.setVisibility(View.GONE);
+
             }
         });
 

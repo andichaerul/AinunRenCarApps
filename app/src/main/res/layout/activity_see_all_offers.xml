@@ -18,12 +18,33 @@
             android:background="@color/colorPrimary"
             android:minHeight="?attr/actionBarSize"
             app:titleTextColor="#FAFAFA" />
-        <TextView
-            android:id="@+id/loadingOffersSeeAll"
-            android:gravity="center_vertical|center_horizontal"
-            android:text="Loading..."
+
+
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/shimmer_see_all_offers"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:duration="800">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <include layout="@layout/shimmer_all_offers" />
+
+                <include layout="@layout/shimmer_all_offers" />
+
+                <include layout="@layout/shimmer_all_offers" />
+
+                <include layout="@layout/shimmer_all_offers" />
+
+                <include layout="@layout/shimmer_all_offers" />
+            </LinearLayout>
+
+
+        </com.facebook.shimmer.ShimmerFrameLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
