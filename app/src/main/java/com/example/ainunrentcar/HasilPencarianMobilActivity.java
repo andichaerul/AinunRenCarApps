@@ -46,8 +46,7 @@ public class HasilPencarianMobilActivity extends AppCompatActivity {
     private String tanggalAwalString;
     private String tanggalSelesaiString;
     private LinearLayout tombolFilter;
-    private TextView tampilanLoading;
-    private TextView tampilkanMobilKosong;
+    private LinearLayout placeHolder;
     private TextView jumlahMobilTersedia;
     private TextView closeFormFilter;
     private BottomSheetBehavior behavior;
@@ -121,12 +120,10 @@ public class HasilPencarianMobilActivity extends AppCompatActivity {
         tanggalAwal = (TextView) findViewById(R.id.tanggalAwal);
         tanggalSelesai = (TextView) findViewById(R.id.tanggalSelesai);
         recyclerView = (RecyclerView) findViewById(R.id.daftarMobilTersedia);
-        tampilanLoading = (TextView) findViewById(R.id.tampilanLoading);
-        tampilkanMobilKosong = (TextView) findViewById(R.id.tampilkanMobilKosong);
+        placeHolder = (LinearLayout) findViewById(R.id.placeHolder);
         jumlahMobilTersedia = (TextView) findViewById(R.id.jumlahMobilTersedia);
         closeFormFilter = (TextView) findViewById(R.id.closeFormFilter);
         tombolSimpanFilter = (TextView) findViewById(R.id.tombolSimpanFilter);
-        tampilkanMobilKosong.setVisibility(View.GONE);
         chipGroupSort = (ChipGroup) findViewById(R.id.filterSort);
         chipGroupByUnit = (ChipGroup) findViewById(R.id.chipGroupByUnit);
     }
@@ -264,7 +261,7 @@ public class HasilPencarianMobilActivity extends AppCompatActivity {
             public void onResponse(JSONArray response) {
                 jumlahMobilTersedia.setText(response.length() + " Jumlah Mobil Tersedia");
                 if (response.length() == 0) {
-                    tampilkanMobilKosong.setVisibility(View.VISIBLE);
+                    placeHolder.setVisibility(View.VISIBLE);
                 } else {
                     for (int i = 0; i < response.length(); i++) {
                         try {
@@ -280,19 +277,19 @@ public class HasilPencarianMobilActivity extends AppCompatActivity {
                             modelDaftarMobilTersediaList.add(modelDaftarMobilTersedia);
                         } catch (JSONException e) {
                             e.printStackTrace();
-                            tampilanLoading.setVisibility(View.GONE);
+                            placeHolder.setVisibility(View.GONE);
                         }
                     }
                 }
 
                 adapter.notifyDataSetChanged();
-                tampilanLoading.setVisibility(View.GONE);
+                placeHolder.setVisibility(View.GONE);
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.e("Volley", error.toString());
-                tampilanLoading.setVisibility(View.GONE);
+                placeHolder.setVisibility(View.GONE);
             }
         });
         RequestQueue requestQueue = Volley.newRequestQueue(HasilPencarianMobilActivity.this);

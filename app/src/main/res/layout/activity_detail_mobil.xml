@@ -45,16 +45,16 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="5dp"
                         android:orientation="vertical">
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:background="@color/warnaBackgroundUtama"
-                            android:paddingLeft="10dp"
-                            android:paddingTop="10dp"
-                            android:paddingBottom="10dp"
+                            
+                            android:paddingLeft="5dp"
+                            android:paddingTop="5dp"
+                            android:paddingBottom="5dp"
                             android:text="Toyota Avanza 2019"
                             android:textSize="16dp"
                             android:textStyle="bold" />
@@ -63,7 +63,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="30dp"
                             android:orientation="horizontal"
-                            android:paddingLeft="10dp">
+                            android:paddingLeft="5dp">
 
                             <TextView
                                 android:layout_width="0dp"
@@ -91,7 +91,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="30dp"
                             android:orientation="horizontal"
-                            android:paddingLeft="10dp">
+                            android:paddingLeft="5dp">
 
                             <TextView
                                 android:layout_width="0dp"
@@ -119,7 +119,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="30dp"
                             android:orientation="horizontal"
-                            android:paddingLeft="10dp">
+                            android:paddingLeft="5dp">
 
                             <TextView
                                 android:layout_width="0dp"
@@ -147,7 +147,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="30dp"
                             android:orientation="horizontal"
-                            android:paddingLeft="10dp">
+                            android:paddingLeft="5dp">
 
                             <TextView
                                 android:layout_width="0dp"
@@ -176,7 +176,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="30dp"
                             android:orientation="horizontal"
-                            android:paddingLeft="10dp">
+                            android:paddingLeft="5dp">
 
                             <TextView
                                 android:layout_width="0dp"
@@ -208,7 +208,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="30dp"
                             android:orientation="horizontal"
-                            android:paddingRight="10dp">
+                            android:paddingRight="5dp">
 
                             <TextView
                                 android:layout_width="0dp"
@@ -231,10 +231,10 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:background="@color/warnaBackgroundUtama"
-                            android:paddingLeft="10dp"
-                            android:paddingTop="10dp"
-                            android:paddingBottom="10dp"
+                            
+                            android:paddingLeft="5dp"
+                            android:paddingTop="5dp"
+                            android:paddingBottom="5dp"
                             android:text="Kebijakan Dan Ketentuan "
                             android:textSize="16dp"
                             android:textStyle="bold" />
@@ -243,8 +243,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:justificationMode="inter_word"
-                            android:paddingLeft="10dp"
-                            android:paddingRight="10dp"
+                            android:paddingLeft="5dp"
+                            android:paddingRight="5dp"
                             android:text="Memasuki tahun keempat, Hari Belanja Diskon Indonesia (HBDI) kembali diselenggarakan dengan ragam penawaran menarik. Tahun ini, pelaksanaannya akan berlangsung secara offline maupun online pada 14--30 Agustus 2020.Penyelenggaraannya tahun ini dimaksudkan untuk pemulihan ekonomi nasional. Mendapat dukungan market place, kami bantu publik untuk mengadaptasi kebiasaan baru dengan menerapkan protokol kesehatan, kata Budihardjo Iduansjah selaku Ketua Umum DPP HIPPINDO saat konferensi pers daring, Jumat (7/8/2020).Di kesempatan yang sama, Wakil Menteri Pariwisata dan Ekonomi Kreatif (Wamenparekraf) Angela Tanoesoedibjo, mengatakan, semangat penyelenggaraan HBDI 2020 selaras dengan program Bangga Buatan Indonesia" />
 
                         <View
@@ -266,9 +266,9 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
             android:background="@color/colorPrimary"
             android:gravity="center_vertical|center_horizontal"
             android:text="PESAN SEKARANG"

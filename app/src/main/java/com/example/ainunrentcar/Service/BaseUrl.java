@@ -1,7 +1,7 @@
 package com.example.ainunrentcar.Service;
 
 public class BaseUrl {
-    public String baseUrl = "http://192.168.1.8/ainun-rent/";
+    public String baseUrl = "http://192.168.1.10/ainun-rent/";
     public String subUrlImageUnit = "public/assets/img/gambar_unit/";
     public String subUrlOffersPromo = "api/v1/offers";
     public String subUrlImageOffersPromo = "public/assets/img/gambar_promo/";
@@ -12,6 +12,10 @@ public class BaseUrl {
 
     public String urlHasilPencarianArmada(String tglStart, String tglSelesai, String sortBy, String unitGroup, String lainnya) {
         return baseUrl + "api/v1/find_armada/" + tglStart + "/" + tglSelesai + "/" + sortBy + "/" + unitGroup + "/" + lainnya;
+    }
+
+    public String urlGaleriUnit(String namaFile) {
+        return baseUrl + "public/assets/img/gambar_unit/" + namaFile;
     }
 }
 

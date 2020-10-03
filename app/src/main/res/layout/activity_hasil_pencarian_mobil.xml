@@ -32,7 +32,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="5dp"
-
                     android:text="Loading..."
                     android:textColor="#FFFFFF" />
 
@@ -40,96 +39,41 @@
                     android:id="@+id/tanggalSelesai"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-
                     android:text="Loading..."
                     android:textColor="#FFFFFF" />
             </LinearLayout>
         </androidx.appcompat.widget.Toolbar>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="25dp"
-            android:background="@color/colorPrimary">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="25dp"
-                android:gravity="center_vertical|center_horizontal"
-                android:text="1. Pilih Mobil"
-                android:textColor="#FFFFFF"
-                android:textSize="12dp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="25dp"
-                android:gravity="center_vertical|end"
-                android:text="2. Detail Mobil"
-                android:textColor="#FFFFFF"
-                android:textSize="12dp" />
-        </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <!--            <RelativeLayout-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:layout_margin="10dp"-->
-            <!--                app:layout_scrollFlags="scroll|enterAlways">-->
-
             <TextView
                 android:id="@+id/jumlahMobilTersedia"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="5dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
                 android:text="Loading..." />
 
-            <!--                <LinearLayout-->
-            <!--                    android:layout_width="match_parent"-->
-            <!--                    android:layout_height="wrap_content"-->
-            <!--                    android:gravity="end">-->
-
-            <!--                    <LinearLayout-->
-            <!--                        android:id="@+id/tombolFilter"-->
-            <!--                        android:layout_width="100dp"-->
-            <!--                        android:layout_height="wrap_content"-->
-            <!--                        android:gravity="center_horizontal|center_vertical"-->
-            <!--                        android:orientation="horizontal"-->
-            <!--                        android:padding="5dp">-->
-
-            <!--                        <TextView-->
-            <!--                            android:layout_width="wrap_content"-->
-            <!--                            android:layout_height="wrap_content"-->
-            <!--                            android:layout_marginRight="5dp"-->
-            <!--                            android:fontFamily="@font/flaticon2"-->
-            <!--                            android:text="" />-->
-
-            <!--                        <TextView-->
-            <!--                            android:layout_width="wrap_content"-->
-            <!--                            android:layout_height="wrap_content"-->
-            <!--                            android:text="Filter" />-->
-            <!--                    </LinearLayout>-->
-            <!--                </LinearLayout>-->
-            <!--            </RelativeLayout>-->
-
-            <TextView
-                android:id="@+id/tampilkanMobilKosong"
+            <LinearLayout
+                android:id="@+id/placeHolder"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center_horizontal|center_vertical"
-                android:text="Tidak Mobil Yang Tersedia" />
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/tampilanLoading"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center_horizontal|center_vertical"
-                android:text="loading..." />
+                <include layout="@layout/place_holder_mobil_tersedia" />
+
+                <include layout="@layout/place_holder_mobil_tersedia" />
+
+                <include layout="@layout/place_holder_mobil_tersedia" />
+
+                <include layout="@layout/place_holder_mobil_tersedia" />
+
+                <include layout="@layout/place_holder_mobil_tersedia" />
+            </LinearLayout>
 
             <ScrollView
                 android:layout_width="match_parent"
@@ -144,188 +88,6 @@
         </LinearLayout>
     </LinearLayout>
 
-
     <!--    Bottom sheet filter-->
-    <LinearLayout
-        android:id="@+id/tampilanFilter"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/background_2"
-        android:clickable="true"
-        android:elevation="5dp"
-        android:focusable="true"
-        android:orientation="vertical"
-        app:behavior_hideable="true"
-        app:behavior_peekHeight="50dp"
-        app:layout_behavior="@string/bottom_sheet_behavior"
-        tools:ignore="PrivateResource">
-
-        <!--Toolbar bottom sheet-->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="7dp"
-                android:fontFamily="@font/entypo"
-                android:gravity="center_horizontal"
-                android:text=""
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/closeFormFilter"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_gravity="center_horizontal"
-                android:gravity="center_horizontal"
-                android:text="Filter &amp; Urutkan"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-        </LinearLayout>
-
-        <!--Body Bottom Sheet Filter-->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:background="@color/warnaBackgroundUtama"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="1dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="10dp"
-                        android:layout_weight="1"
-                        android:fontFamily="@font/ionicons"
-                        android:gravity="center_horizontal|center_vertical"
-                        android:text=""
-                        android:textSize="18dp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="1dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="11dp"
-                        android:layout_weight="10"
-                        android:gravity="center_vertical"
-                        android:text="Sortir"
-                        android:textSize="18dp" />
-                </LinearLayout>
-
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="?android:attr/listDivider" />
-
-                <com.google.android.material.chip.ChipGroup
-                    android:id="@+id/filterSort"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    app:singleSelection="true">
-
-                    <com.google.android.material.chip.Chip
-                        android:id="@+id/hargaTertinggi"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:checkable="true"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:tag="hargaTertinggi"
-                        android:text="Harga Tertinggi" />
-
-                    <com.google.android.material.chip.Chip
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:checkable="true"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:tag="hargaTerendah"
-                        android:text="Harga Terendah" />
-
-                </com.google.android.material.chip.ChipGroup>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:background="@color/warnaBackgroundUtama"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="1dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="10dp"
-                        android:layout_weight="1"
-                        android:fontFamily="@font/ionicons"
-                        android:gravity="center_horizontal|center_vertical"
-                        android:text=""
-                        android:textSize="18dp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="1dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="11dp"
-                        android:layout_weight="10"
-                        android:gravity="center_vertical"
-                        android:text="Hanya Menampilkan"
-                        android:textSize="18dp" />
-                </LinearLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="?android:attr/listDivider" />
-
-                <com.google.android.material.chip.ChipGroup
-                    android:id="@+id/chipGroupByUnit"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp">
-
-                </com.google.android.material.chip.ChipGroup>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:gravity="bottom"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/tombolSimpanFilter"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginBottom="10dp"
-                    android:background="@drawable/shape_button"
-                    android:gravity="center_horizontal|center_vertical"
-                    android:text="SIMPAN"
-                    android:textColor="@color/colorFontPutih"
-                    android:textStyle="bold" />
-            </LinearLayout>
-        </LinearLayout>
-    </LinearLayout>
+    <include layout="@layout/bottom_sheet_hasil_pencarian_mobil" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

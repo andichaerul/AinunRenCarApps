@@ -36,8 +36,8 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
             android:gravity="center"
             android:text="Bergabung bersama kami, dan nikmati setiap kemudahan"
             android:textSize="20dp"
@@ -46,8 +46,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
             android:orientation="horizontal">
 
             <TextView
@@ -56,7 +56,7 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/font_awesome"
                 android:gravity="right"
-                android:padding="10dp"
+                android:padding="5dp"
                 android:text=""
                 android:textColor="#1F4BA4"
                 android:textSize="80dp" />
@@ -67,7 +67,7 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/font_awesome"
                 android:gravity="left"
-                android:padding="10dp"
+                android:padding="5dp"
                 android:text=""
                 android:textColor="#A90909"
                 android:textSize="80dp" />
@@ -77,8 +77,8 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
             android:layout_marginBottom="20dp"
             android:gravity="center"
             android:text="Login dengan akun sosial media anda"
@@ -88,8 +88,8 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
             android:gravity="center"
             android:text="Atau"
             android:textSize="20dp"
@@ -98,9 +98,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="5dp"
             android:layout_marginTop="30dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginRight="5dp"
             android:orientation="horizontal">
 
             <TextView

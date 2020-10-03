@@ -17,7 +17,7 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="10dp"
+            android:layout_margin="5dp"
             app:cardCornerRadius="6dp"
             app:cardElevation="1dp"
             app:cardUseCompatPadding="true">
@@ -35,8 +35,8 @@
                     android:clickable="true"
                     android:orientation="vertical"
                     android:padding="10dp"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp">
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp">
 
                     <TextView
                         android:id="@+id/tglAwalLabel"
@@ -90,15 +90,14 @@
                     android:clickable="true"
                     android:orientation="vertical"
                     android:padding="10dp"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp">
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp">
 
 
                     <TextView
                         android:id="@+id/textView2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-
                         android:text="Tanggal Selesai"
                         android:textColor="@android:color/secondary_text_light"
                         android:textSize="18sp" />
@@ -149,7 +148,7 @@
                 android:background="@drawable/pendukung_riple_button_search"
                 android:gravity="center_horizontal|center_vertical"
                 android:orientation="horizontal"
-                android:padding="10dp">
+                android:padding="5dp">
 
 
                 <TextView
@@ -164,9 +163,8 @@
                 <TextView
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
-
                     android:gravity="center_horizontal"
-                    android:text="Cari Mobil"
+                    android:text="CARI MOBIL"
                     android:textColor="#ffffff"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -175,12 +173,12 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="5dp"
             android:layout_marginTop="20dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginRight="5dp"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:padding="10dp">
+            android:padding="5dp">
 
             <TextView
                 android:id="@+id/Offers"
@@ -214,43 +212,7 @@
             </LinearLayout>
         </LinearLayout>
 
-        <HorizontalScrollView
-            android:id="@+id/loadingOffers"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:scrollbars="none">
-
-            <com.facebook.shimmer.ShimmerFrameLayout
-                android:id="@+id/shimmer_view_container"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                app:duration="100">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <androidx.cardview.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
-                        android:layout_width="300dp"
-                        android:layout_height="150dp"
-                        card_view:cardCornerRadius="6dp"
-                        card_view:cardElevation="0dp"
-                        card_view:cardUseCompatPadding="true" />
-
-                    <androidx.cardview.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
-                        android:layout_width="300dp"
-                        android:layout_height="150dp"
-                        card_view:cardCornerRadius="6dp"
-                        card_view:cardElevation="0dp"
-                        card_view:cardUseCompatPadding="true" />
-                </LinearLayout>
-
-
-            </com.facebook.shimmer.ShimmerFrameLayout>
-
-        </HorizontalScrollView>
+        <include layout="@layout/place_holder_slide_offers" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
