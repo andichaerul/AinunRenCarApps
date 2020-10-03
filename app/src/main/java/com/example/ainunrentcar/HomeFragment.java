@@ -30,6 +30,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.ainunrentcar.Model.ModelOffers;
 import com.example.ainunrentcar.Service.BaseUrl;
 import com.example.ainunrentcar.View.AdapterOffers;
+import com.facebook.shimmer.ShimmerFrameLayout;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -43,6 +44,7 @@ import org.json.JSONObject;
 
 
 public class HomeFragment extends Fragment {
+    private ShimmerFrameLayout shimmerSlideHome;
     private LinearLayout cariMobilTersedia;
     private DatePickerDialog datePickerDialog;
     private TextView resultTanggalAwal;
@@ -92,6 +94,7 @@ public class HomeFragment extends Fragment {
         tanggalSelesai = (LinearLayout) root.findViewById(R.id.tanggalSelesai);
         btnSeeAllOffers = (TextView) root.findViewById(R.id.seeAllOffers);
         loadingOffers = (HorizontalScrollView) root.findViewById(R.id.loadingOffers);
+        shimmerSlideHome = (ShimmerFrameLayout) root.findViewById(R.id.shimmer_view_container);
     }
 
     // Event click pilih tanggal awal
@@ -211,6 +214,7 @@ public class HomeFragment extends Fragment {
 //        final ProgressDialog progressDialog = new ProgressDialog(getContext());
 //        progressDialog.setMessage("Loading...");
 //        progressDialog.show();
+        shimmerSlideHome.startShimmerAnimation();
 
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(urlSlide, new Response.Listener<JSONArray>() {
             @Override
@@ -231,14 +235,15 @@ public class HomeFragment extends Fragment {
                 }
                 adapter.notifyDataSetChanged();
 //                progressDialog.dismiss();
-                loadingOffers.setVisibility(View.GONE);
+//                loadingOffers.setVisibility(View.GONE);
+                shimmerSlideHome.setVisibility(View.GONE);
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.e("Volley", error.toString());
 //                progressDialog.dismiss();
-                loadingOffers.setVisibility(View.GONE);
+//                loadingOffers.setVisibility(View.GONE);
             }
         });
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());

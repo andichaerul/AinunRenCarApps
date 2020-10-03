@@ -6,5 +6,6 @@
     <color name="colorButtonPrimary">#F4511E</color>
     <color name="warnaBackgroundUtama">@color/default_circle_indicator_stroke_color</color>
     <color name="colorFont0">#353535</color>
-
+    <color name="colorFontPutih">@android:color/white</color>
+    <color name="backgroundShimmer">#dddddd</color>
 </resources>
