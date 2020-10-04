@@ -34,13 +34,13 @@ public class DetailMobilActivity extends AppCompatActivity {
     private LinearLayoutManager linearLayoutManager;
     private DividerItemDecoration dividerItemDecoration;
     private RecyclerView mList;
+    private BaseUrl baseUrl = new BaseUrl();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_mobil);
         toolbar();
-        String bb = getIntent().getExtras().getString("idMobil");
         mList = (RecyclerView) findViewById(R.id.recyclerView);
         getDataApiMobilTersedia();
         setAdapterKeRecycleView();
@@ -61,8 +61,8 @@ public class DetailMobilActivity extends AppCompatActivity {
     }
 
     private void getDataApiMobilTersedia() {
-
-        String urlDetailUnit = "http://192.168.1.8/ainun-rent/api/v1/find_armada/detail/1";
+        String idMobil = getIntent().getExtras().getString("idMobil");
+        String urlDetailUnit = baseUrl.detailUnit(idMobil);
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(urlDetailUnit, new Response.Listener<JSONArray>() {
             @SuppressLint("SetTextI18n")
             @Override

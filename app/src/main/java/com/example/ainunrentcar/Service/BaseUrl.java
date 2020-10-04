@@ -17,5 +17,9 @@ public class BaseUrl {
     public String urlGaleriUnit(String namaFile) {
         return baseUrl + "public/assets/img/gambar_unit/" + namaFile;
     }
+
+    public String detailUnit(String idUnit) {
+        return baseUrl + "api/v1/find_armada/detail/" + idUnit;
+    }
 }
 
