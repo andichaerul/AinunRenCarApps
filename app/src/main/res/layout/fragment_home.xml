@@ -191,8 +191,9 @@
 
 
             <LinearLayout
+                android:layout_margin="5dp"
                 android:id="@+id/cariMobilTersedia"
-                android:layout_width="170dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/pendukung_riple_button_search"
