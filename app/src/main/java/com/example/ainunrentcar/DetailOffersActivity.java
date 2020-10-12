@@ -82,8 +82,8 @@ public class DetailOffersActivity extends AppCompatActivity {
                         judulSlide.setText(judul);
                         isiContentSlide.setText(isiContent);
                         RequestOptions requestOptions = new RequestOptions();
-                        requestOptions.placeholder(R.drawable.image_null);
-                        requestOptions.error(R.drawable.image_null);
+                        requestOptions.placeholder(R.drawable.img_place_holder);
+                        requestOptions.error(R.drawable.img_place_holder);
                         Glide.with(DetailOffersActivity.this)
                                 .setDefaultRequestOptions(requestOptions)
                                 .load(baseUrl.baseUrl + "public/assets/img/gambar_promo/" + imgUrl)

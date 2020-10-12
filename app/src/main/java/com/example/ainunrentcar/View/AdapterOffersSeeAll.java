@@ -40,8 +40,8 @@ public class AdapterOffersSeeAll extends RecyclerView.Adapter<AdapterOffersSeeAl
     public void onBindViewHolder(ViewHolder holder, int position) {
         ModelOffersSeeAll modelOffersSeeAll = list.get(position);
         RequestOptions requestOptions = new RequestOptions();
-        requestOptions.placeholder(R.drawable.image_null);
-        requestOptions.error(R.drawable.image_null);
+        requestOptions.placeholder(R.drawable.img_place_holder);
+        requestOptions.error(R.drawable.img_place_holder);
         Glide.with(holder.imagePromo)
                 .setDefaultRequestOptions(requestOptions)
                 .load(list.get(position).getGambarPromo())

@@ -42,8 +42,8 @@ public class AdapterOffers extends RecyclerView.Adapter<AdapterOffers.ViewHolder
     public void onBindViewHolder(ViewHolder holder, int position) {
         ModelOffers modelOffers = list.get(position);
         RequestOptions requestOptions = new RequestOptions();
-        requestOptions.placeholder(R.drawable.image_null);
-        requestOptions.error(R.drawable.image_null);
+        requestOptions.placeholder(R.drawable.img_place_holder);
+        requestOptions.error(R.drawable.img_place_holder);
         Glide.with(holder.imgSlide)
                 .setDefaultRequestOptions(requestOptions)
                 .load(list.get(position).getUrlGambar())

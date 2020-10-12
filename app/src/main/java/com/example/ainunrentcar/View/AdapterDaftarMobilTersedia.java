@@ -46,8 +46,8 @@ public class AdapterDaftarMobilTersedia extends RecyclerView.Adapter<AdapterDaft
     public void onBindViewHolder(ViewHolder holder, int position) {
         ModelDaftarMobilTersedia modelDaftarMobilTersedia = list.get(position);
         RequestOptions requestOptions = new RequestOptions();
-        requestOptions.placeholder(R.drawable.image_null);
-        requestOptions.error(R.drawable.image_null);
+        requestOptions.placeholder(R.drawable.img_place_holder);
+        requestOptions.error(R.drawable.img_place_holder);
         Glide.with(holder.urlImgUnit)
                 .setDefaultRequestOptions(requestOptions)
                 .load(list.get(position).getUrlImgUnit())
