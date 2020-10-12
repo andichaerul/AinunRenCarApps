@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/tampilanFilter"
     android:layout_width="match_parent"
@@ -22,6 +22,8 @@
         android:layout_height="50dp"
         android:background="@android:color/white"
         android:orientation="vertical">
+
+        <include layout="@layout/line_divider" />
 
         <TextView
             android:layout_width="match_parent"
@@ -48,6 +50,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
+        <include layout="@layout/line_divider" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -82,10 +86,7 @@
             </LinearLayout>
 
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="?android:attr/listDivider" />
+            <include layout="@layout/line_divider" />
 
             <com.google.android.material.chip.ChipGroup
                 android:id="@+id/filterSort"
@@ -116,6 +117,8 @@
 
             </com.google.android.material.chip.ChipGroup>
         </LinearLayout>
+
+        <include layout="@layout/line_divider" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -149,18 +152,15 @@
                     android:textStyle="bold" />
             </LinearLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="?android:attr/listDivider" />
+            <include layout="@layout/line_divider" />
 
             <com.google.android.material.chip.ChipGroup
                 android:id="@+id/chipGroupByUnit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@android:color/white"
-                android:paddingBottom="50dp"
-                android:paddingLeft="5dp">
+                android:paddingLeft="5dp"
+                android:paddingBottom="50dp">
 
             </com.google.android.material.chip.ChipGroup>
         </LinearLayout>

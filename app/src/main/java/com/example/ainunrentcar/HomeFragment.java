@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.DatePicker;
+import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -27,7 +28,6 @@ import com.android.volley.toolbox.Volley;
 import com.example.ainunrentcar.Model.ModelOffers;
 import com.example.ainunrentcar.Service.BaseUrl;
 import com.example.ainunrentcar.View.AdapterOffers;
-import com.facebook.shimmer.ShimmerFrameLayout;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -41,7 +41,7 @@ import org.json.JSONObject;
 
 
 public class HomeFragment extends Fragment {
-    private ShimmerFrameLayout shimmerSlideHome;
+    private HorizontalScrollView placeHolderSlideOffers;
     private LinearLayout cariMobilTersedia;
     private DatePickerDialog datePickerDialog;
     private TextView resultTanggalAwal;
@@ -89,7 +89,7 @@ public class HomeFragment extends Fragment {
         tanggalAwal = (LinearLayout) root.findViewById(R.id.tanggalAwal);
         tanggalSelesai = (LinearLayout) root.findViewById(R.id.tanggalSelesai);
         btnSeeAllOffers = (TextView) root.findViewById(R.id.seeAllOffers);
-        shimmerSlideHome = (ShimmerFrameLayout) root.findViewById(R.id.shimmer_view_container);
+        placeHolderSlideOffers = (HorizontalScrollView) root.findViewById(R.id.loadingOffers);
     }
 
     // Event click pilih tanggal awal
@@ -206,7 +206,7 @@ public class HomeFragment extends Fragment {
 
     // Mengambil data api slide offers (Penawaran)
     private void getDataApiOffers() {
-        shimmerSlideHome.startShimmer();
+
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(urlSlide, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
@@ -221,17 +221,17 @@ public class HomeFragment extends Fragment {
                         modelOffersList.add(modelOffers);
                     } catch (JSONException e) {
                         e.printStackTrace();
-//                        shimmerSlideHome.setVisibility(View.GONE);
+
                     }
                 }
                 adapter.notifyDataSetChanged();
-                shimmerSlideHome.setVisibility(View.GONE);
+                placeHolderSlideOffers.setVisibility(View.GONE);
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.e("Volley", error.toString());
-//                shimmerSlideHome.setVisibility(View.GONE);
+//
             }
         });
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());

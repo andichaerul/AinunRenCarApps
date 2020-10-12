@@ -14,25 +14,11 @@
         tools:layout_editor_absoluteX="49dp"
         tools:layout_editor_absoluteY="238dp">
 
-
-        <com.facebook.shimmer.ShimmerFrameLayout
-            android:id="@+id/shimmer_detail_offers"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:duration="100">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <include layout="@layout/shimmer_detail_offers" />
-            </RelativeLayout>
-        </com.facebook.shimmer.ShimmerFrameLayout>
+        <include layout="@layout/place_holder_detail_offers" />
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             tools:ignore="ScrollViewCount">
 
             <LinearLayout
@@ -41,6 +27,7 @@
                 android:orientation="vertical">
 
                 <ImageView
+                    android:layout_marginTop="50dp"
                     android:id="@+id/imgSlide"
                     android:layout_width="match_parent"
                     android:layout_height="200dp" />
@@ -49,8 +36,8 @@
                     android:id="@+id/judulContentSlide"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
                     android:justificationMode="inter_word"
                     android:text="Loading..."
                     android:textSize="20dp"
@@ -60,9 +47,8 @@
                     android:id="@+id/isiContentSlide"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
+                    android:layout_margin="10dp"
                     android:justificationMode="inter_word"
-
                     android:text="Loading..." />
             </LinearLayout>
         </ScrollView>
@@ -72,7 +58,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#00A4322E"
+        android:background="@color/colorPrimary"
         android:minHeight="?attr/actionBarSize"
         app:titleTextColor="#FAFAFA"
         tools:ignore="MissingConstraints" />

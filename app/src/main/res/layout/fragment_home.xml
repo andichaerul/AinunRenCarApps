@@ -13,6 +13,56 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp" />
+
+        <include layout="@layout/place_holder_slide_offers" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginRight="5dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/Offers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/padauk_reguler"
+                android:text="Offers"
+                android:textColor="@color/colorPrimary" />
+
+            <TextView
+                android:id="@+id/IconOffers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/award"
+                android:text=""
+                android:textColor="@color/colorPrimary"
+                android:textSize="20dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right">
+
+                <TextView
+                    android:id="@+id/seeAllOffers"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/padauk_reguler"
+                    android:text="See All >"
+                    android:textAlignment="textEnd" />
+            </LinearLayout>
+        </LinearLayout>
+
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
@@ -169,55 +219,5 @@
                     android:textStyle="bold" />
             </LinearLayout>
         </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="5dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:padding="5dp">
-
-            <TextView
-                android:id="@+id/Offers"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/padauk_reguler"
-                android:text="Offers"
-                android:textColor="@color/colorPrimary" />
-
-            <TextView
-                android:id="@+id/IconOffers"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/award"
-                android:text=""
-                android:textColor="@color/colorPrimary"
-                android:textSize="20dp" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="right">
-
-                <TextView
-                    android:id="@+id/seeAllOffers"
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/padauk_reguler"
-                    android:text="See All >"
-                    android:textAlignment="textEnd" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <include layout="@layout/place_holder_slide_offers" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
     </LinearLayout>
 </ScrollView>

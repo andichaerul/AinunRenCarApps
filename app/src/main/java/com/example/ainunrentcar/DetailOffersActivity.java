@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.android.volley.RequestQueue;
@@ -18,7 +19,6 @@ import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.ainunrentcar.Service.BaseUrl;
-import com.facebook.shimmer.ShimmerFrameLayout;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -28,7 +28,7 @@ public class DetailOffersActivity extends AppCompatActivity {
     private TextView judulSlide;
     private TextView isiContentSlide;
     private ImageView imgSlide;
-    private ShimmerFrameLayout shimmerFrameLayout;
+    private ScrollView placeHolderDetailOffers;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +56,8 @@ public class DetailOffersActivity extends AppCompatActivity {
         judulSlide = (TextView) findViewById(R.id.judulContentSlide);
         isiContentSlide = (TextView) findViewById(R.id.isiContentSlide);
         imgSlide = (ImageView) findViewById(R.id.imgSlide);
-        shimmerFrameLayout = (ShimmerFrameLayout) findViewById(R.id.shimmer_detail_offers);
+        placeHolderDetailOffers = (ScrollView) findViewById(R.id.placeHolderDetailOffers);
+
     }
 
     private void getDataApiOffers() {
@@ -95,7 +96,7 @@ public class DetailOffersActivity extends AppCompatActivity {
                     }
                 }
 //                progressDialog.dismiss();
-                shimmerFrameLayout.setVisibility(View.GONE);
+                placeHolderDetailOffers.setVisibility(View.GONE);
             }
         }, new Response.ErrorListener() {
             @Override
