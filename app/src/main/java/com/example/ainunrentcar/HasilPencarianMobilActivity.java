@@ -136,7 +136,6 @@ public class HasilPencarianMobilActivity extends AppCompatActivity {
                 String tglAwal = tglSql.tglSql(tanggalAwalString);
                 String tglSelesai = tglSql.tglSql(tanggalSelesaiString);
                 String url = baseUrl.urlHasilPencarianArmada(tglAwal, tglSelesai, sortByApa(), filterUnitApa(), "null");
-                Log.d("dsadasd", url);
                 getDataApiMobilTersedia("update", url);
                 addData();
                 behavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
@@ -175,8 +174,6 @@ public class HasilPencarianMobilActivity extends AppCompatActivity {
             }
             filterUnitBy = android.text.TextUtils.join("_", xx);
         }
-
-        Log.d("dsadasdasd", filterUnitBy);
         return filterUnitBy;
     }
 
@@ -245,6 +242,7 @@ public class HasilPencarianMobilActivity extends AppCompatActivity {
 
     //    Get API Daftar Mobil Tersedia
     private void getDataApiMobilTersedia(String update, String url) {
+        placeHolder.setVisibility(View.VISIBLE);
         TglSql tglSql = new TglSql();
         String tglAwal = tglSql.tglSql(tanggalAwalString);
         String tglSelesai = tglSql.tglSql(tanggalSelesaiString);
