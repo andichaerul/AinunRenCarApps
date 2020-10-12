@@ -47,7 +47,6 @@ public class AdapterOffersSeeAll extends RecyclerView.Adapter<AdapterOffersSeeAl
                 .load(list.get(position).getGambarPromo())
                 .apply(new RequestOptions().centerCrop())
                 .into(holder.imagePromo);
-        holder.judulPromo.setText(String.valueOf(modelOffersSeeAll.getJudulPromo()));
     }
 
     @Override
@@ -55,15 +54,13 @@ public class AdapterOffersSeeAll extends RecyclerView.Adapter<AdapterOffersSeeAl
         return list.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView judulPromo;
-        public ImageView imagePromo;
-        public CardView untukClickSlide;
+    class ViewHolder extends RecyclerView.ViewHolder {
+        ImageView imagePromo;
+        CardView untukClickSlide;
 
-        public ViewHolder(View itemView) {
+        ViewHolder(View itemView) {
             super(itemView);
             imagePromo = itemView.findViewById(R.id.imagePromo);
-            judulPromo = itemView.findViewById(R.id.judulPromo);
             untukClickSlide = itemView.findViewById(R.id.slideOffers);
             untukClickSlide.setOnClickListener(new View.OnClickListener() {
                 @Override

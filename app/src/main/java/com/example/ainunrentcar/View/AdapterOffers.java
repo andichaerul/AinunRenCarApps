@@ -49,7 +49,6 @@ public class AdapterOffers extends RecyclerView.Adapter<AdapterOffers.ViewHolder
                 .load(list.get(position).getUrlGambar())
                 .apply(new RequestOptions().centerCrop())
                 .into(holder.imgSlide);
-        holder.textJudul.setText(String.valueOf(modelOffers.getJudul()));
     }
 
 //    private String getIdOffers(String value) {
@@ -61,15 +60,13 @@ public class AdapterOffers extends RecyclerView.Adapter<AdapterOffers.ViewHolder
         return list.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView textJudul;
-        public ImageView imgSlide;
-        public CardView untukClickSlide;
+    class ViewHolder extends RecyclerView.ViewHolder {
+        ImageView imgSlide;
+        CardView untukClickSlide;
 
-        public ViewHolder(View itemView) {
+        ViewHolder(View itemView) {
             super(itemView);
             imgSlide = itemView.findViewById(R.id.imageSlide);
-            textJudul = itemView.findViewById(R.id.txt_judul);
             untukClickSlide = itemView.findViewById(R.id.slideOffers);
             untukClickSlide.setOnClickListener(new View.OnClickListener() {
                 @Override
